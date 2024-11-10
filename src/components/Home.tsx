@@ -11,13 +11,15 @@ const Home = () => {
   return (
     <SidebarProvider>
       <AppSidebar />
-      <div className="w-full h-screen bg-gray-100">
+      <div className="w-full h-screen bg-[#fafafa] dark:bg-[#18181b]">
         <Navbar />
         <SidebarTrigger />
         <Breadcrumbs />
 
         {/* Outlet */}
+        <section className="h-[85%] px-4 mt-5 mx-4">
         <Outlet />
+    </section>
       </div>
     </SidebarProvider>
   );

@@ -6,7 +6,6 @@ import {
   Menu,
   Search,
   Settings,
-  Sidebar,
 } from "lucide-react";
 import {
   DropdownMenu,
@@ -16,17 +15,18 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "./ui/dropdown-menu";
+import { Input } from "./ui/input";
 
 const Navbar = () => {
   return (
     <header>
-      <nav className="z-50 flex items-center justify-between w-full px-4 py-2 shadow">
-        <div className="text-2xl font-semibold">EMS</div>
+      <nav className="z-50 flex items-center justify-between w-full py-2 shadow lg:px-4">
+        <Link to={"/"} className="pl-2 text-2xl font-semibold">EMS</Link>
 
         {/* nav items */}
         <div className="items-center hidden gap-4 md:flex">
-          <div className="flex items-center h-10 px-5 py-1 bg-gray-200 rounded-full">
-            <input
+          <div className="flex items-center h-10 gap-1 px-5 py-1 rounded-full">
+            <Input
               type="text"
               placeholder="Search"
               className="bg-transparent focus:outline-none"
@@ -72,13 +72,13 @@ const Navbar = () => {
         {/* nav item in small devices */}
         <div className="flex gap-3 md:hidden">
           {/* Search Form */}
-          <div className="flex items-center h-10 px-5 py-1 bg-gray-200 rounded-full">
+          <div className="flex items-center py-1 rounded-full h-18">
             <input
               type="text"
               placeholder="Search"
-              className="bg-transparent focus:outline-none"
+              className="text-center bg-transparent focus:outline-none"
             />
-            <Search size={16} cursor={"pointer"} /> {/* Add states*/}
+            <Search size={16} cursor={"pointer"} /> {/* Add useState*/}
           </div>
 
           {/* Toggle Theme */}
@@ -89,7 +89,7 @@ const Navbar = () => {
           {/* Dropdown menu */}
           <DropdownMenu>
             <DropdownMenuTrigger>
-              <Menu />
+              <Menu className="mr-2"/>
             </DropdownMenuTrigger>
             <DropdownMenuContent>
               <DropdownMenuLabel></DropdownMenuLabel>

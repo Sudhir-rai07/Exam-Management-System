@@ -81,4 +81,21 @@
   .nav-item{
     @apply flex items-center justify-center w-10 h-10 border rounded-full;
   }
+  .input{
+    @apply px-2 py-1 bg-gray-200 border focus:outline-none placeholder:text-gray-700 max-w-[250px]
+  }
+}
+
+::-webkit-scrollbar {
+  width: 6px;                /* Adjust scrollbar width */
+  height: 6px;               /* Adjust scrollbar height */
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgba(209, 209, 209, 0.494); /* Thumb color */
+  border-radius: 3px;                    /* Rounded corners for thumb */
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;   /* Track color */
 }

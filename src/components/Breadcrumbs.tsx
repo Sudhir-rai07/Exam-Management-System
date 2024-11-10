@@ -19,10 +19,10 @@ const Breadcrumbs = () => {
       currentLink += `/${crumb}`;
 
       return (
-        <Breadcrumb>
+        <Breadcrumb key={crumb}>
           <BreadcrumbList>
-            <BreadcrumbItem className="ml-4">
-             <LayoutGrid size={14}/> <BreadcrumbLink href={currentLink} className="text-pink-600">{crumb}</BreadcrumbLink>
+            <BreadcrumbItem className="">
+              <BreadcrumbLink href={currentLink} className="text-[14px] cursor-pointer text-pink-600">{crumb}</BreadcrumbLink>
             </BreadcrumbItem>
             <BreadcrumbSeparator>
               <Slash />
@@ -31,7 +31,7 @@ const Breadcrumbs = () => {
         </Breadcrumb>
       );
     });
-  return <div className="">{crumbs}</div>;
+  return <div className="flex items-center gap-2 ml-4"><LayoutGrid size={14}/>{crumbs}</div>;
 };
 
 export default Breadcrumbs;

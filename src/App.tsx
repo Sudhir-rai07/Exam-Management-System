@@ -5,6 +5,9 @@ import Home from './components/Home'
 import { ThemeProvider } from './components/theme-provider'
 import Profile from './components/pages/Profile'
 import EmptyPage from './components/pages/Home/EmptyPage'
+import ExamInfo from './components/pages/ExamInfo'
+import TestBank from './components/pages/TestBank'
+import Organisation from './components/pages/Organisation'
 
 const App = () => {
   return (
@@ -13,6 +16,9 @@ const App = () => {
         <Route path='/' element={<Home />}>
             <Route index element={<EmptyPage />} />
             <Route path='profile' element={<Profile />} />
+            <Route path='exam-info' element={<ExamInfo />} />
+            <Route path='test-bank' element={<TestBank />} />
+            <Route path='organisation' element={<Organisation />} />
         </Route>
         <Route path='/login' element={<Login />}/>
         <Route path='/signup' element={<SignUp />}/>

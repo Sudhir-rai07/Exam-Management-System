@@ -31,7 +31,7 @@ const userMenuItems: MenuItemType[] = [
     },
     {
       title: "Organisation",
-      url: "Organisation",
+      url: "organisation",
       icon: <Users />,
     },
   ];

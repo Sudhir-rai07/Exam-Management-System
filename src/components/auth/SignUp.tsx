@@ -4,6 +4,16 @@ import { FaUser } from "react-icons/fa";
 import { IoMdEye, IoMdEyeOff, IoMdMail, IoMdPeople } from "react-icons/io";
 import { LiaCriticalRole } from "react-icons/lia";
 import { Link } from "react-router-dom";
+import Breadcrumbs from "../Breadcrumbs";
+import { Input } from "../ui/input";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "../ui/select";
+import { Button } from "../ui/button";
 
 const SignUp = () => {
   const [username, setUsername] = useState("");
@@ -13,70 +23,71 @@ const SignUp = () => {
   const [role, setRole] = useState("");
   const [showPassword, setShowPassword] = useState(false);
 
-
-
   const toggelPasswordView = () => {
     setShowPassword((prev) => !prev);
   };
 
-
   const handleSubmit = (e: React.ChangeEvent<HTMLFormElement>) => {
-    e.preventDefault()
-        if(!username || !password || !email || !group || !role){
-            return toast.error("All fields are required");
-        }
-        console.log(username, null, password)
-        setUsername("")
-        setPassword("")
-        setEmail("")
-        setGroup("")
-        setRole("")
-  }
+    e.preventDefault();
+    if (!username || !password || !email || !group || !role) {
+      return toast.error("All fields are required");
+    }
+    console.log(username, null, password);
+    setUsername("");
+    setPassword("");
+    setEmail("");
+    setGroup("");
+    setRole("");
+  };
   return (
     <div className="w-full h-screen">
-      <section className="h-full w-full flex">
-        <div className=" lg:w-1/3 h-full w-0">
-          <img src="./images/loginPagePicture.png" className="h-full w-full" />
+      <section className="flex w-full h-full">
+        <div className="w-0 h-full lg:w-1/3">
+          <img src="./images/loginPagePicture.png" className="w-full h-full" />
         </div>
 
-        <div className="w-full lg:w-2/3 flex items-center justify-center">
-          <form onSubmit={handleSubmit} className="h-[500px] w-[700px] shadow-[0px_0px_10px_4px_#cbd5e0] ml-4 rounded-md flex-col flex justify-center px-12">
-            <p className="text-3xl font-semibold">SignUp to Exam Management System</p>
-            <span className="text-gray-600 my-2 text-xl">{"Good afternoon!"}</span>
+        <div className="relative flex bg-[#fafafa] dark:bg-[#18181b] items-center justify-center w-full lg:w-2/3">
+          <div className="max-w-[300px] absolute top-0 left-0 ml-4">
+            <Breadcrumbs />
+          </div>
+          <form
+            onSubmit={handleSubmit}
+            className="py-8 w-[700px] shadow-[0px_0px_10px_4px_#cbd5e0] ml-4 rounded-md flex-col flex justify-center px-12"
+          >
+            <p className="text-3xl font-semibold">
+              SignUp to Exam Management System
+            </p>
+            <span className="my-2 text-xl text-gray-600">
+              {"Good afternoon!"}
+            </span>
 
             <div className="bg-transparent flex rounded-sm items-center gap-2 bg-gray-100 px-2 py-2 max-w-[350px]">
               <FaUser color="gray" />
-              <input
+              <Input
                 type="text"
                 placeholder="Username"
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
-                className="bg-transparent focus:outline-none flex-1 rounded-sm "
+                className="flex-1 bg-transparent rounded-sm focus:outline-none "
               />
             </div>
 
             <div className="bg-transparent mt-4 flex rounded-sm items-center gap-2 bg-gray-100 px-2 py-2 max-w-[350px]">
               <IoMdMail color="gray" />
-              <input
+              <Input
                 type="email"
                 placeholder="Email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="bg-transparent focus:outline-none flex-1 rounded-sm "
+                className="flex-1 bg-transparent rounded-sm focus:outline-none "
               />
             </div>
 
             <div className="bg-transparent mt-4 flex rounded-sm items-center gap-2 bg-gray-100 px-2 py-2 max-w-[350px]">
-              <input
-                type={`${showPassword ? "text" : "password"}`}
-                placeholder="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                className="bg-transparent focus:outline-none flex-1 rounded-sm "
-              />
-              {!showPassword ? (
+              {showPassword ? (
                 <>
                   <IoMdEye
+                  size={18}
                     color="gray"
                     className="cursor-pointer"
                     onClick={toggelPasswordView}
@@ -85,39 +96,61 @@ const SignUp = () => {
               ) : (
                 <>
                   <IoMdEyeOff
+                  size={18}
                     color="gray"
                     className="cursor-pointer"
                     onClick={toggelPasswordView}
                   />
                 </>
               )}
-            </div>
-
-            <div className="bg-transparent mt-4 flex rounded-sm items-center gap-2 bg-gray-100 px-2 py-2 max-w-[350px]">
-              <IoMdPeople color="gray" />
-              <input
-                type="text"
-                placeholder="Group"
-                value={group}
-                onChange={(e) => setGroup(e.target.value)}
-                className="bg-transparent focus:outline-none flex-1 rounded-sm "
+              <Input
+                type={`${showPassword ? "text" : "password"}`}
+                placeholder="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                className="flex-1 bg-transparent rounded-sm focus:outline-none "
               />
             </div>
 
             <div className="bg-transparent mt-4 flex rounded-sm items-center gap-2 bg-gray-100 px-2 py-2 max-w-[350px]">
-              <LiaCriticalRole color="gray" />
-              <input
-                type="text"
-                placeholder="Role"
-                value={role}
-                onChange={(e) => setRole(e.target.value)}
-                className="bg-transparent focus:outline-none flex-1 rounded-sm "
-              />
+              <IoMdPeople size={18} color="gray" />
+              <Select onValueChange={(value) => setRole(value)}>
+                <SelectTrigger>
+                  <SelectValue placeholder="Role" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="student">Student</SelectItem>
+                  <SelectItem value="teacher">Teacher</SelectItem>
+                </SelectContent>
+              </Select>
             </div>
 
+            <div className="bg-transparent mt-4 flex rounded-sm items-center gap-2 bg-gray-100 px-2 py-2 max-w-[350px]">
+              <LiaCriticalRole size={18} color="gray" />
+              <Select onValueChange={(value) => setGroup(value)}>
+                <SelectTrigger>
+                  <SelectValue placeholder="Group" />
+                </SelectTrigger>
+                <SelectContent>
+                  {Array.from({length: 5}).map((_, idx:number) =>(
+                    <SelectItem key={idx} value={`${idx+1}`}>{idx+1}</SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            </div>
 
-            <button type="submit" className="bg-blue-600 text-white w-[350px] mt-4 py-1">SignUp</button>
-            <span className="mt-3 text-sm text-gray-600">Already have an account?  <Link to={"/login"} className="hover:text-blue-600 transition">Login</Link></span>
+            <Button
+              type="submit"
+              className="bg-blue-600 text-white w-[350px] mt-4 py-1"
+            >
+              SignUp
+            </Button>
+            <span className="mt-3 text-sm text-gray-600">
+              Already have an account?{" "}
+              <Link to={"/login"} className="transition hover:text-blue-600">
+                Login
+              </Link>
+            </span>
           </form>
         </div>
       </section>
