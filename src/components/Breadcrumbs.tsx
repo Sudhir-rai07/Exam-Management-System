@@ -6,7 +6,7 @@ import {
   BreadcrumbList,
   BreadcrumbSeparator,
 } from "./ui/breadcrumb";
-import { Grid2x2, Slash } from "lucide-react";
+import { LayoutGrid, Slash } from "lucide-react";
 
 const Breadcrumbs = () => {
   const location = useLocation();
@@ -21,8 +21,8 @@ const Breadcrumbs = () => {
       return (
         <Breadcrumb>
           <BreadcrumbList>
-            <BreadcrumbItem>
-             <Grid2x2 size={14}/> <BreadcrumbLink href={currentLink}>{crumb}</BreadcrumbLink>
+            <BreadcrumbItem className="ml-4">
+             <LayoutGrid size={14}/> <BreadcrumbLink href={currentLink} className="text-pink-600">{crumb}</BreadcrumbLink>
             </BreadcrumbItem>
             <BreadcrumbSeparator>
               <Slash />
@@ -31,7 +31,7 @@ const Breadcrumbs = () => {
         </Breadcrumb>
       );
     });
-  return <div>{crumbs}</div>;
+  return <div className="">{crumbs}</div>;
 };
 
 export default Breadcrumbs;

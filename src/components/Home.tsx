@@ -1,3 +1,4 @@
+import { Outlet } from "react-router-dom";
 import { AppSidebar } from "./app-sidebar";
 import Breadcrumbs from "./Breadcrumbs";
 import Navbar from "./Navbar";
@@ -10,10 +11,13 @@ const Home = () => {
   return (
     <SidebarProvider>
       <AppSidebar />
-      <div className="w-full h-full">
+      <div className="w-full h-screen bg-gray-100">
         <Navbar />
         <SidebarTrigger />
         <Breadcrumbs />
+
+        {/* Outlet */}
+        <Outlet />
       </div>
     </SidebarProvider>
   );
