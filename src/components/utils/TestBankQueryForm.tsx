@@ -44,7 +44,7 @@ const TestBankQueryForm = () => {
             <div className="mt-8">
                 <form onSubmit={handleSubmit} className="query-form">
                     <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-                        <div className="flex items-center gap-2">
+                        <div className="input-container">
                             <label htmlFor="id">ID</label>
                             <Input
                                 type="text"
@@ -57,7 +57,7 @@ const TestBankQueryForm = () => {
                             />
                         </div>
 
-                        <div className="flex items-center gap-2">
+                        <div className="input-container">
                             <label htmlFor="stem">Stem</label>
                             <Input
                                 type="text"
@@ -70,7 +70,7 @@ const TestBankQueryForm = () => {
                             />
                         </div>
 
-                        <div className="flex items-center gap-2">
+                        <div className="input-container">
                             <label htmlFor="created-by">Created by</label>
                             <Input
                                 type="text"
@@ -82,7 +82,7 @@ const TestBankQueryForm = () => {
                                 className="input"
                             />
                         </div>
-                        <div className="flex items-center gap-2">
+                        <div className="input-container">
                             <label htmlFor="updated-time">Start Time</label>
                             <Input
                                 type="datetime-local"
@@ -95,7 +95,7 @@ const TestBankQueryForm = () => {
                             />
                         </div>
                        
-                        <div className="flex items-center gap-2">
+                        <div className="input-container">
                             <label htmlFor="name">Type</label>
                             <Select onValueChange={(value)=> setState(value)}>
                                 <SelectTrigger className="w-[180px]">
@@ -109,7 +109,7 @@ const TestBankQueryForm = () => {
                             </Select>
                         </div>
 
-                        <div className="flex items-center gap-2">
+                        <div className="input-container">
                             <label htmlFor="name">Difficulty</label>
                             <StarRating totalStars={5} initialRating={0} onRatingChange={handleRatingChange} />
                             <span>{difficulty}</span>

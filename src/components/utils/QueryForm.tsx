@@ -41,7 +41,7 @@ const QueryForm = () => {
             <div className="mt-8">
                 <form onSubmit={handleSubmit} className="query-form">
                     <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-                        <div className="flex items-center gap-2">
+                        <div className="input-container">
                             <label htmlFor="exam-name">Name</label>
                             <Input
                                 type="text"
@@ -53,7 +53,7 @@ const QueryForm = () => {
                                 className="input"
                             />
                         </div>
-                        <div className="flex items-center gap-2">
+                        <div className="input-container">
                             <label htmlFor="start-time">Start Time</label>
                             <Input
                                 type="datetime-local"
@@ -65,7 +65,7 @@ const QueryForm = () => {
                                 className="input"
                             />
                         </div>
-                        <div className="flex items-center gap-2">
+                        <div className="input-container">
                             <label htmlFor="end-time">End Time</label>
                             <Input
                                 type="datetime-local"
@@ -77,7 +77,7 @@ const QueryForm = () => {
                                 className="input"
                             />
                         </div>
-                        <div className="flex items-center gap-2">
+                        <div className="input-container">
                             <label htmlFor="name">State</label>
                             <Select onValueChange={(value)=> setState(value)}>
                                 <SelectTrigger className="w-[180px]">
@@ -89,7 +89,7 @@ const QueryForm = () => {
                                 </SelectContent>
                             </Select>
                         </div>
-                        <div className="flex items-center gap-2">
+                        <div className="input-container">
                             <label htmlFor="name">Difficulty</label>
                             <StarRating totalStars={5} initialRating={0} onRatingChange={handleRatingChange} />
                             <span>{difficulty}</span>

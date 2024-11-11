@@ -9,6 +9,7 @@ import ExamInfo from './components/pages/ExamInfo'
 import TestBank from './components/pages/TestBank'
 import Organisation from './components/pages/Organisation'
 import Grade from './components/Grade'
+import Instructors from './components/pages/Instructors'
 
 const App = () => {
   return (
@@ -20,6 +21,7 @@ const App = () => {
             <Route path='exam-info' element={<ExamInfo />} />
             <Route path='test-bank' element={<TestBank />} />
             <Route path='organisation' element={<Organisation />} />
+            <Route path='instructors' element={<Instructors />} />
             <Route path='grade' element={<Grade />} />
         </Route>
         <Route path='/login' element={<Login />}/>

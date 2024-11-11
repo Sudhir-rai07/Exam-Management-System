@@ -12,3 +12,19 @@ export type ExamCardType = {
     time: string
     group: number
 }
+
+export type OrganisationType = {
+    id: number
+    name: string
+    email: string
+    password: string
+    last_login_time: string
+  }
+
+export type InstructorType = {
+    id: number
+    name: string
+    email: string
+    subject: string
+    last_login_time: string
+}

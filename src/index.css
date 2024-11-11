@@ -84,6 +84,9 @@
   .input{
     @apply px-2 py-1 bg-gray-200 border focus:outline-none placeholder:text-gray-700 max-w-[250px]
   }
+  .input-container{
+    @apply flex flex-col gap-2 md:flex-row md:items-center;
+  }
 }
 
 ::-webkit-scrollbar {
