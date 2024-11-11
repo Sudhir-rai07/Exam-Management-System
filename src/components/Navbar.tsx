@@ -71,15 +71,6 @@ const Navbar = () => {
 
         {/* nav item in small devices */}
         <div className="flex gap-3 md:hidden">
-          {/* Search Form */}
-          <div className="flex items-center py-1 rounded-full h-18">
-            <input
-              type="text"
-              placeholder="Search"
-              className="text-center bg-transparent focus:outline-none"
-            />
-            <Search size={16} cursor={"pointer"} /> {/* Add useState*/}
-          </div>
 
           {/* Toggle Theme */}
           <div className="block md:hidden">

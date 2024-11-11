@@ -26,7 +26,7 @@ const OrganisationQueryForm = () => {
             <div className="mt-8">
                 <form onSubmit={handleSubmit} className="query-form">
                     <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-                        <div className="flex items-center gap-2">
+                        <div className="gap-2 md:flex md:items-center">
                             <label htmlFor="organisation-id">ID</label>
                             <Input
                                 type="text"
@@ -39,7 +39,7 @@ const OrganisationQueryForm = () => {
                             />
                         </div>
 
-                        <div className="flex items-center gap-2">
+                        <div className="gap-2 md:flex md:items-center">
                             <label htmlFor="organisation-name">Name</label>
                             <Input
                                 type="text"
@@ -52,7 +52,7 @@ const OrganisationQueryForm = () => {
                             />
                         </div>
 
-                        <div className="flex items-center gap-2">
+                        <div className="gap-2 md:flex md:items-center">
                             <label htmlFor="email">Email</label>
                             <Input
                                 type="email"
@@ -64,7 +64,7 @@ const OrganisationQueryForm = () => {
                                 className="input"
                             />
                         </div>
-                        <div className="flex items-center gap-2">
+                        <div className="gap-2 md:flex md:items-center">
                             <label htmlFor="login-time">Login Time</label>
                             <Input
                                 type="datetime-local"
