@@ -3,7 +3,9 @@ import {
   flexRender,
   getCoreRowModel,
   getPaginationRowModel,
+  getFilteredRowModel,
   useReactTable,
+  ColumnFiltersState,
 } from "@tanstack/react-table"
 
 import {
@@ -15,6 +17,7 @@ import {
   TableRow,
 } from "@/components/ui/table"
 import { Button } from "@/components/ui/button"
+import { useState } from "react"
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[]
@@ -25,13 +28,23 @@ export function DataTable<TData, TValue>({
   columns,
   data,
 }: DataTableProps<TData, TValue>) {
+
+
+  const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([])
+  
   const table = useReactTable({
     data,
     columns,
     getCoreRowModel: getCoreRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
+    getFilteredRowModel: getFilteredRowModel(),
+    state:{
+      globalFilter:columnFilters
+    },
+    onGlobalFilterChange: setColumnFilters
   })
 
+ 
   return (
     <div className="flex flex-col border rounded-md">
       <Table>

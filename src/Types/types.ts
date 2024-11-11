@@ -28,3 +28,13 @@ export type InstructorType = {
     subject: string
     last_login_time: string
 }
+
+export type StudentType = {
+    id: number
+    name: string
+    email: string
+    group: number
+    last_login_time: string
+    password: string
+}
+

@@ -21,20 +21,23 @@ type MenuItemType = {
 const userMenuItems: MenuItemType[] = [
     {
       title: "Instructors",
-      url: "/instructors",
+      url: "/admin/user/instructors",
       icon: <PresentationIcon />,
     },
     {
       title: "Students",
-      url: "/students",
+      url: "/user/students",
       icon: <User />,
     },
     {
       title: "Organisation",
-      url: "organisation",
+      url: "/admin/user/organisation",
       icon: <Users />,
     },
   ];
+
+
+  
 
   const examMenuItems: MenuItemType[] = [
     {
@@ -43,15 +46,16 @@ const userMenuItems: MenuItemType[] = [
         icon: <BookCheck />,
       }, {
         title: "Questions",
-        url: "/questiions",
+        url: "/questions",
         icon: <FileQuestion />,
       }, {
         title: "Exam info",
-        url: "/exam-info",
+        url: "/teacher/exam-info",
         icon: <Info />,
+        // THIS PART IS FOR TEACHER
       },{
         title: "Grade",
-        url: "/grade",
+        url: "/student/grade",
         icon: <ChartLine />,
       },
   ]
@@ -139,3 +143,4 @@ export function AppSidebar() {
     </Sidebar>
   );
 }
+ 
