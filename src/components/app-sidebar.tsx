@@ -50,7 +50,7 @@ const teacherMenuItems2 : MenuItemType[] = [
 
 const studentMenuItems: MenuItemType[] = [
   {
-    title: "Exam Info",
+    title: "Exam",
     url: "/student/exam",
     icon: <Info />,
   },{
@@ -274,7 +274,7 @@ if(role === 'admin'){
 export function AppSidebar() {
   return (
     <Sidebar>
-      {sidebarContent(role)}
+      {sidebarContent("student")}
 
       <SidebarFooter>
           <SidebarMenu>

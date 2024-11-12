@@ -45,3 +45,17 @@ export type ValidateAnswerCardType = {
     time: string
     group: number
 }
+export type QuestionType = {
+    id: number
+    questions: string
+    type: "multipleChoice" | "Single" | "true/false"
+    createdBy: string 
+    updateTime: string
+}
+
+export type StudentExamCardType = {
+    examName: string
+    examDate: string
+    examDuration: string
+    examStatus: "start" | "completed" | "feedback"
+}

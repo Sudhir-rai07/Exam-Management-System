@@ -8,7 +8,7 @@ const ValidateAnswers = () => {
         <QueryForm />
         <hr className="h-[2px] my-4 bg-gray-300 dark:bg-gray-700"/>
 
-        <div className="grid grid-cols-1 gap-6 mt-4 overflow-x-scroll overflow-y-scroll lg:grid-cols-3 md:grid-cols-2 h-1/2 place-items-center">
+        <div className="grid grid-cols-1 gap-6 mt-4 overflow-x-scroll overflow-y-scroll lg:grid-cols-3 md:gri`d-cols-2 h-1/2 place-items-center">
         {Array.from({length: 5}).map((_, idx: number)=>{
             return (
                 <ValidateAnswersCard date='20/07/2004' difficulty={<StaticStarRating rating={3}/>}
@@ -19,6 +19,7 @@ const ValidateAnswers = () => {
                 />
             )
         })}
+
       </div>
     </section>
 

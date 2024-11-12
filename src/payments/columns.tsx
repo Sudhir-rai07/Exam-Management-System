@@ -1,10 +1,12 @@
-import { InstructorType, OrganisationType, StudentType } from "@/Types/types";
+import StaticStarRating from "@/components/utils/StaticStarRating";
+import { InstructorType, OrganisationType, QuestionType, StudentType } from "@/Types/types";
 import { ColumnDef, createColumnHelper } from "@tanstack/react-table";
 import { Trash } from "lucide-react";
 
 const columnHelper = createColumnHelper<InstructorType>();
 const organisationColumnHelper = createColumnHelper<OrganisationType>();
 const studentColumnHelper = createColumnHelper<StudentType>();
+const questionColumnHelper = createColumnHelper<QuestionType>();
 
 export const organisationColumns: ColumnDef<OrganisationType>[] = [
   {
@@ -96,6 +98,34 @@ export const studentColumns: ColumnDef<StudentType>[] = [
     header: "Action",
     cell: ({row})=> (
       <span className="flex items-center gap-2 text-red-500 cursor-pointer"><Trash size={16} /> delete</span>
+    )
+  })
+
+]
+
+export const questionColumns: ColumnDef<QuestionType>[] = [
+  {
+    accessorKey: "id",
+    header: "ID"
+  },{
+    accessorKey: "questions",
+    header: "Stem"
+  }
+  ,{
+    accessorKey: "type",
+    header: "Type"
+  },{
+    accessorKey: "createdBy",
+    header: "CreatedBy"
+  },{
+    accessorKey: "updateTime",
+    header: "UpdateTime"
+  },
+  questionColumnHelper.display({
+    id: "actions",
+    header: "Actions",
+    cell: ({row})=> (
+      <span className="flex items-center gap-2 text-red-500 cursor-pointer"><Trash size={18}/> Actions</span>
     )
   })
 

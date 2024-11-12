@@ -1,7 +1,13 @@
 import { Route, Routes } from 'react-router-dom'
 import { lazy, Suspense } from 'react'
 import { ThemeProvider } from './components/theme-provider'
-import ValidateAnswers from './components/pages/ValidateAnswers'
+import StudentExam from './components/StudentExam'
+
+// import Questions from './components/pages/Questions'
+const Questions = lazy(()=> import('./components/pages/Questions'))
+
+// import ValidateAnswers from './components/pages/ValidateAnswers'
+const ValidateAnswers = lazy(()=> import('./components/pages/ValidateAnswers'))
 
 // import Login from './components/auth/Login'
 const Login = lazy(()=> import('./components/auth/Login'))
@@ -51,7 +57,9 @@ const App = () => {
             <Route path='admin/organisation' element={<Organisation />} />
             <Route path='admin/instructors' element={<Instructors />} />
             <Route path='student/grade' element={<Grade />} />
+            <Route path='student/exam' element={<StudentExam />} />
             <Route path='teacher/validate-answers' element={<ValidateAnswers />} />
+            <Route path='teacher/questions' element={<Questions />} />
         </Route>
         <Route path='/login' element={<Login />}/>
         <Route path='/signup' element={<SignUp />}/>

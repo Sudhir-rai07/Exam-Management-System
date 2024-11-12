@@ -13,7 +13,7 @@ const ExamInfo = () => {
           <Plus size={100}/>
            </div>
           {Array.from({length: 5}).map((_, idx:number)=>(
-            <ExamCard date="20/07/2024" examName="Math Exam" group={4} time="lamba" key={idx+1} difficulty={<StaticStarRating key={idx} rating={4}/> }/>
+            <ExamCard date="20/07/2024" examName="Math Exam" group={4} time="45" key={idx+1} difficulty={<StaticStarRating key={idx} rating={4}/> }/>
           ))}
         </div>
     </section>
