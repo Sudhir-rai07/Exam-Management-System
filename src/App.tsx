@@ -1,6 +1,7 @@
 import { Route, Routes } from 'react-router-dom'
 import { lazy, Suspense } from 'react'
 import { ThemeProvider } from './components/theme-provider'
+import ValidateAnswers from './components/pages/ValidateAnswers'
 
 // import Login from './components/auth/Login'
 const Login = lazy(()=> import('./components/auth/Login'))
@@ -44,12 +45,13 @@ const App = () => {
         <Route path='/' element={<Home />}>
             <Route index element={<EmptyPage />} />
             <Route path='profile' element={<Profile />} />
-            <Route path='user/students' element={<Students />} />
-            <Route path='test-bank' element={<TestBank />} />
+            <Route path='admin/students' element={<Students />} />
+            <Route path='/admin/test-bank' element={<TestBank />} />
             <Route path='teacher/exam-info' element={<ExamInfo />} />
-            <Route path='admin/user/organisation' element={<Organisation />} />
-            <Route path='admin/user/instructors' element={<Instructors />} />
+            <Route path='admin/organisation' element={<Organisation />} />
+            <Route path='admin/instructors' element={<Instructors />} />
             <Route path='student/grade' element={<Grade />} />
+            <Route path='teacher/validate-answers' element={<ValidateAnswers />} />
         </Route>
         <Route path='/login' element={<Login />}/>
         <Route path='/signup' element={<SignUp />}/>

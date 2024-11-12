@@ -38,3 +38,10 @@ export type StudentType = {
     password: string
 }
 
+export type ValidateAnswerCardType = {
+    exam_name: string
+    date: string
+    difficulty: React.ReactElement
+    time: string
+    group: number
+}

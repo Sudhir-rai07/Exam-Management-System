@@ -105,10 +105,10 @@ const AddOrganisationDialog = ({headerText}: {headerText: string}) => {
               />
             </div>
           <DialogFooter>
-             <Button type="reset" onClick={handleRest} className="bg-gray-400" disabled={btnDisable}>
+             <Button type="reset" onClick={handleRest} className="bg-gray-400 " disabled={btnDisable}>
               Reset
             </Button>
-            <Button type="submit" className="bg-blue-600 hover:bg-blue-700" disabled={btnDisable}>
+            <Button type="submit" className="text-white bg-blue-600 hover:bg-blue-700" disabled={btnDisable}>
               Submit
             </Button>
           </DialogFooter>
