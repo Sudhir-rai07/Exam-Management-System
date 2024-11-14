@@ -48,7 +48,8 @@ export type ValidateAnswerCardType = {
 export type QuestionType = {
     id: number
     questions: string
-    type: "multipleChoice" | "Single" | "true/false"
+    type: string | "multipleChoice" | "explanation" | "true/false"
+    difficulty: number
     createdBy: string 
     updateTime: string
 }

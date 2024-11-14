@@ -5,7 +5,6 @@ import Navbar from "./Navbar";
 import { SidebarProvider, SidebarTrigger } from "./ui/sidebar";
 
 const Home = () => {
-
     
     
   return (

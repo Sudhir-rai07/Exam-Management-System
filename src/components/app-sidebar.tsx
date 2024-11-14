@@ -9,9 +9,10 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger, Item } from "@radix-ui/react-dropdown-menu";
-import { Building2, ChevronUp, CopyCheck, FileQuestion, GraduationCap, Grid2X2, Info, LayoutGrid, PresentationIcon, Sheet, User, User2, Users } from "lucide-react";
+import { useUserRole } from "@/zustand/store";
+import { Building2, ChevronUp, CopyCheck, FileQuestion, GraduationCap, Grid2X2, Info, LayoutGrid, Plus, Sheet, User, User2 } from "lucide-react";
 import { Link } from "react-router-dom";
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "./ui/dropdown-menu";
 
 type MenuItemType = {
   title: string;
@@ -19,7 +20,6 @@ type MenuItemType = {
   icon: React.ReactNode;
 };
 
- const role = 'teacher'
 
 //  Exam --> Question ExamInfo
 const teacherMenuItems1 : MenuItemType[] = [
@@ -32,7 +32,11 @@ const teacherMenuItems1 : MenuItemType[] = [
     title: "Exam Info",
     url: "/teacher/exam-info",
     icon: <Info />,
-  },
+  }  ,{
+    title: "Create Exam",
+    url: "/teacher/exam-info/create",
+    icon: <Plus />,
+  }
 ]
 const teacherMenuItems2 : MenuItemType[] = [
   {
@@ -227,54 +231,14 @@ if(role === 'admin'){
 }
 }
 
-// const userMenuItems: MenuItemType[] = [
-//     {
-//       title: "Instructors",
-//       url: "/admin/user/instructors",
-//       icon: <PresentationIcon />,
-//     },
-//     {
-//       title: "Students",
-//       url: "/user/students",
-//       icon: <User />,
-//     },
-//     {
-//       title: "Organisation",
-//       url: "/admin/user/organisation",
-//       icon: <Users />,
-//     },
-//   ];
-
-
-  
-
-  // const examMenuItems: MenuItemType[] = [
-  //   {
-  //       title: "Test Bank",
-  //       url: "/test-bank",
-  //       icon: <BookCheck />,
-  //     }, {
-  //       title: "Questions",
-  //       url: "/questions",
-  //       icon: <FileQuestion />,
-  //     }, {
-  //       title: "Exam info",
-  //       url: "/teacher/exam-info",
-  //       icon: <Info />,
-  //       // THIS PART IS FOR TEACHER
-  //     },{
-  //       title: "Grade",
-  //       url: "/student/grade",
-  //       icon: <ChartLine />,
-  //     },
-  // ]
-
- 
-
 export function AppSidebar() {
-  return (
+    const {role} = useUserRole()
+    console.log(role)
+    
+    return (
     <Sidebar>
-      {sidebarContent("student")}
+      {/* Select user Role */}
+      {sidebarContent(role)}
 
       <SidebarFooter>
           <SidebarMenu>

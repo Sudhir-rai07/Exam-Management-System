@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { SetStateAction, useState } from "react";
 import {
     Select,
     SelectContent,
@@ -11,7 +11,7 @@ import StarRating from "./StarRating";
 import { questionDifficulty } from "./utils";
 import { Button } from "../ui/button";
 
-const QuestionsQueryForm = () => {
+const QuestionsQueryForm = ({setQuery}: {setQuery: React.Dispatch<SetStateAction<string | number>>}) => {
     const [questionId, setQuestionId] = useState("");
     const [stem, setStem] = useState("");
     const [createdBy, setCreatedBy] = useState("");
@@ -24,8 +24,11 @@ const QuestionsQueryForm = () => {
         setSelectedRating(rating);
     };
 
+    const query = questionId || stem || createdBy || type || updateTime || selectedRating;
+
     const handleSubmit = (e: React.ChangeEvent<HTMLFormElement>) =>{
         e.preventDefault();
+        setQuery(query)
         // console.log({examName, startTime, endTime, state, selectedRating, difficulty})
     }
 

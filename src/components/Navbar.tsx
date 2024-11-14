@@ -1,12 +1,6 @@
 import { Link } from "react-router-dom";
 import { ModeToggle } from "./mode-toggel";
-import {
-  BellDot,
-  Languages,
-  Menu,
-  Search,
-  Settings,
-} from "lucide-react";
+import { BellDot, Languages, Menu, Search, Settings } from "lucide-react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -16,12 +10,33 @@ import {
   DropdownMenuTrigger,
 } from "./ui/dropdown-menu";
 import { Input } from "./ui/input";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "./ui/select";
+import { useUserRole } from "@/zustand/store";
+
 
 const Navbar = () => {
+  const {setUserRole} = useUserRole()  
+
   return (
     <header>
       <nav className="z-50 flex items-center justify-between w-full py-2 shadow lg:px-4">
-        <Link to={"/"} className="pl-2 text-2xl font-semibold">EMS</Link>
+        <Link to={"/"} className="pl-2 text-2xl font-semibold">
+          EMS
+        </Link>
+
+        {/* Select user Role */}
+        <div className="max-w-[300px]">
+        <Select onValueChange={(value) => setUserRole(value)}>
+            <SelectTrigger>
+              <SelectValue placeholder="Selct Role" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="admin">Admin</SelectItem>
+              <SelectItem value="teacher">Teacher</SelectItem>
+              <SelectItem value="student">Student</SelectItem>
+            </SelectContent>
+        </Select>
+        </div>
 
         {/* nav items */}
         <div className="items-center hidden gap-4 md:flex">
@@ -71,7 +86,6 @@ const Navbar = () => {
 
         {/* nav item in small devices */}
         <div className="flex gap-3 md:hidden">
-
           {/* Toggle Theme */}
           <div className="block md:hidden">
             <ModeToggle />
@@ -80,7 +94,7 @@ const Navbar = () => {
           {/* Dropdown menu */}
           <DropdownMenu>
             <DropdownMenuTrigger>
-              <Menu className="mr-2"/>
+              <Menu className="mr-2" />
             </DropdownMenuTrigger>
             <DropdownMenuContent>
               <DropdownMenuLabel></DropdownMenuLabel>

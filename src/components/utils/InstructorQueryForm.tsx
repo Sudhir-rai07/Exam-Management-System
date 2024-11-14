@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { SetStateAction, useState } from "react";
 import {
     Select,
     SelectContent,
@@ -9,15 +9,18 @@ import {
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";
 
-const InstructorQueryForm = () => {
+const InstructorQueryForm = ({setQuery}: {setQuery: React.Dispatch<SetStateAction<string>>}) => {
     const [instructorId, setInstructorId] = useState("");
     const [instructorName, setInstructorName] = useState("");
     const [instructorEmail, setInstructorEmail] = useState("");
     const [subject, setSubject] = useState("");
     const [loginTime, setLoginTime] = useState("");
 
+    const query = instructorId || instructorName || instructorEmail || subject || loginTime;
+
     const handleSubmit = (e: React.ChangeEvent<HTMLFormElement>) =>{
         e.preventDefault();
+        setQuery(query)
         // console.log({examName, startTime, endTime, state, selectedRating, difficulty})
     }
 

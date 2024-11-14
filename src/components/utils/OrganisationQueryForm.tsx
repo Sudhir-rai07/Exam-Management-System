@@ -3,14 +3,16 @@ import { Input } from "../ui/input";
 import { Button } from "../ui/button";
 import { RotateCcw, Search } from "lucide-react";
 
-const OrganisationQueryForm = () => {
+const OrganisationQueryForm = ({setQuery}:{setQuery: React.Dispatch<React.SetStateAction<string>>}) => {
     const [organisationId, setOrganisationId] = useState("");
     const [organisationName, setOrganisationName] = useState("");
     const [email, setEmail] = useState("");
     const [loginTime, setLoginTime] = useState("");
 
+    const query = organisationId || organisationName || email || loginTime;
     const handleSubmit = (e: React.ChangeEvent<HTMLFormElement>) =>{
         e.preventDefault();
+        setQuery(query)
         console.log({})
     }
 

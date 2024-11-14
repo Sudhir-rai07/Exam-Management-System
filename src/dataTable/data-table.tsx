@@ -5,7 +5,6 @@ import {
   getPaginationRowModel,
   getFilteredRowModel,
   useReactTable,
-  ColumnFiltersState,
 } from "@tanstack/react-table"
 
 import {
@@ -17,31 +16,36 @@ import {
   TableRow,
 } from "@/components/ui/table"
 import { Button } from "@/components/ui/button"
-import { useState } from "react"
+import { SetStateAction, useState } from "react"
+import { Dialog } from "@radix-ui/react-dialog"
+import { DialogContent, DialogTrigger } from "@/components/ui/dialog"
 
 interface DataTableProps<TData, TValue> {
-  columns: ColumnDef<TData, TValue>[]
-  data: TData[]
+  columns: ColumnDef<TData, TValue>[];
+  data: TData[];
+  globalFilter: string | number; // Optional, so add ? if you don't always use it
+  setGlobalFilter: React.Dispatch<SetStateAction<string | number>>
 }
+
 
 export function DataTable<TData, TValue>({
   columns,
   data,
+  globalFilter,
+  setGlobalFilter
 }: DataTableProps<TData, TValue>) {
 
-
-  const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([])
   
   const table = useReactTable({
     data,
     columns,
+    state:{
+      globalFilter:globalFilter
+    },
     getCoreRowModel: getCoreRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
     getFilteredRowModel: getFilteredRowModel(),
-    state:{
-      globalFilter:columnFilters
-    },
-    onGlobalFilterChange: setColumnFilters
+    onGlobalFilterChange: setGlobalFilter
   })
 
  
@@ -69,16 +73,29 @@ export function DataTable<TData, TValue>({
         <TableBody>
           {table.getRowModel().rows?.length ? (
             table.getRowModel().rows.map((row) => (
+              <Dialog>
               <TableRow
                 key={row.id}
                 data-state={row.getIsSelected() && "selected"}
               >
                 {row.getVisibleCells().map((cell) => (
+                  
                   <TableCell key={cell.id}>
-                    {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                  <DialogTrigger> {flexRender(cell.column.columnDef.cell, cell.getContext())}</DialogTrigger> 
                   </TableCell>
                 ))}
               </TableRow>
+
+              <DialogContent>
+              {row.getVisibleCells().map((cell) => (
+                  
+                  <TableCell key={cell.id}>
+                   {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                  </TableCell>
+                ))}
+              </DialogContent>
+
+              </Dialog>
             ))
           ) : (
             <TableRow>
