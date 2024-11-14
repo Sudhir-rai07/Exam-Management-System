@@ -69,8 +69,8 @@ const App = () => {
             <Route path='admin/students' element={<Students />} />
             <Route path='/admin/test-bank' element={<TestBank />} />
             <Route path='teacher/exam-info' element={<ExamInfo />} />
-            <Route path='/teacher/exam-info/create' element={<CreateExam />}>
-                  <Route index element={<FirstPage />} />
+            <Route path='/teacher/exam-info/create/' element={<CreateExam />}>
+                  <Route index  path='basic' element={<FirstPage />} />
                   <Route path={'select-question'} element={<SecondPage />} />
                   <Route path={'preview'} element={<ThirdPage />} />
                   <Route path={'success'} element={<PageFour />} />

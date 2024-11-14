@@ -1,5 +1,4 @@
 import { Button } from "@/components/ui/button"
-import { Checkbox } from "@/components/ui/checkbox"
 import { Label } from "@/components/ui/label"
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 import { Textarea } from "@/components/ui/textarea"
@@ -11,7 +10,8 @@ import { Link } from "react-router-dom"
 const ThirdPage = () => {
   console.log(questions[0])
   return (
-    <section className='w-full h-full'>
+    <section className='flex flex-col w-full h-full md:flex'>
+      <div className="w-full h-full py-4 overflow-y-scroll md:w-2/3">
         {questions.length>0 && questions.map((question:Question, idx:number)=>(
             <>
             <div className="flex flex-col gap-2 mb-8" key={idx+"p"}>
@@ -38,14 +38,18 @@ const ThirdPage = () => {
                 </RadioGroup>
               </>)}
               {question.questionType === "Describe" && (<>
-                <Textarea placeholder="Describe in brief"></Textarea>
+                <Textarea placeholder="Describe in brief" className="w-full px-4 md:w-1/2"></Textarea>
               </>)}
+              
             </div>
             </>
         ))}
+        </div>
 
-<Button className="w-1/2 text-white bg-blue-600 hover:bg-blue-700"><Link className="flex items-center gap-2" to={"/teacher/exam-info/create/success"}><ArrowRight size={16}/> Next step</Link></Button>
+<div className="flex items-end py-4 ml-4">
+<Button className="mt-4 text-white bg-blue-600 hover:bg-blue-700"><Link className="flex items-center gap-2" to={"/teacher/exam-info/create/success"}><ArrowRight size={16}/> Next step</Link></Button>
 
+</div>
     </section>
   )
 }

@@ -15,10 +15,10 @@ import { useUserRole } from "@/zustand/store";
 
 
 const Navbar = () => {
-  const {setUserRole} = useUserRole()  
+  const {role,setUserRole} = useUserRole()  
 
   return (
-    <header>
+    <header className="sticky top-0 bg-gray-100">
       <nav className="z-50 flex items-center justify-between w-full py-2 shadow lg:px-4">
         <Link to={"/"} className="pl-2 text-2xl font-semibold">
           EMS
@@ -28,12 +28,12 @@ const Navbar = () => {
         <div className="max-w-[300px]">
         <Select onValueChange={(value) => setUserRole(value)}>
             <SelectTrigger>
-              <SelectValue placeholder="Selct Role" />
+              <SelectValue placeholder={role.toUpperCase()} />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="admin">Admin</SelectItem>
-              <SelectItem value="teacher">Teacher</SelectItem>
-              <SelectItem value="student">Student</SelectItem>
+              <SelectItem value="admin">ADMIN</SelectItem>
+              <SelectItem value="teacher">TEACHER</SelectItem>
+              <SelectItem value="student">STUDENT</SelectItem>
             </SelectContent>
         </Select>
         </div>

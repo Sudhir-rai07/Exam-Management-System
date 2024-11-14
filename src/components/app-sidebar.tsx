@@ -34,7 +34,7 @@ const teacherMenuItems1 : MenuItemType[] = [
     icon: <Info />,
   }  ,{
     title: "Create Exam",
-    url: "/teacher/exam-info/create",
+    url: "/teacher/exam-info/create/basic",
     icon: <Plus />,
   }
 ]
