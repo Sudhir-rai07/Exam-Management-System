@@ -7,6 +7,15 @@ import StudentExam from './components/StudentExam'
 import ThirdPage from './components/pages/CreateExam/ThirdPage'
 import PageFour from './components/pages/CreateExam/PageFour'
 
+// import UpdateProfile from './components/pages/user/UpdateProfile'
+const UpdateProfile = lazy(()=> import('./components/pages/user/UpdateProfile'))
+
+
+
+// import ResetPassword from './components/auth/ResetPassword'
+const ResetPassword = lazy(()=> import('./components/auth/ResetPassword'))
+
+
 // import CreateExam from './components/pages/CreateExam/CreateExam'
 const CreateExam = lazy(()=> import('./components/pages/CreateExam/CreateExam'))
 
@@ -34,7 +43,7 @@ const SignUp = lazy(()=> import('./components/auth/SignUp'))
 const Home = lazy(()=> import('./components/Home'))
 
 // import Profile from './components/pages/Profile'
-const Profile = lazy(()=> import('./components/pages/Profile'))
+const Profile = lazy(()=> import('./components/pages/user/Profile'))
 
 // import EmptyPage from './components/pages/Home/EmptyPage'
 const EmptyPage = lazy(()=> import('./components/pages/Home/EmptyPage'))
@@ -65,7 +74,6 @@ const App = () => {
       <Routes>
         <Route path='/' element={<Home />}>
             <Route index element={<EmptyPage />} />
-            <Route path='profile' element={<Profile />} />
             <Route path='admin/students' element={<Students />} />
             <Route path='/admin/test-bank' element={<TestBank />} />
             <Route path='teacher/exam-info' element={<ExamInfo />} />
@@ -84,6 +92,9 @@ const App = () => {
         </Route>
         <Route path='/login' element={<Login />}/>
         <Route path='/signup' element={<SignUp />}/>
+        <Route path='/reset-password' element={<ResetPassword />}/>
+        <Route path='/profile' element={<Profile />} />
+        <Route path='/update-profile' element={<UpdateProfile />} />
       </Routes>
     </ThemeProvider>
       </Suspense>

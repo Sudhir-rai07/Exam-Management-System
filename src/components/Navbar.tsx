@@ -11,11 +11,11 @@ import {
 } from "./ui/dropdown-menu";
 import { Input } from "./ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "./ui/select";
-import { useUserRole } from "@/zustand/store";
+import { useUser } from "@/zustand/store";
 
 
 const Navbar = () => {
-  const {role,setUserRole} = useUserRole()  
+  // const {role,setUserRole} = useUser()  
 
   return (
     <header className="sticky top-0 bg-gray-100">
@@ -25,7 +25,7 @@ const Navbar = () => {
         </Link>
 
         {/* Select user Role */}
-        <div className="max-w-[300px]">
+        {/* <div className="max-w-[300px]">
         <Select onValueChange={(value) => setUserRole(value)}>
             <SelectTrigger>
               <SelectValue placeholder={role.toUpperCase()} />
@@ -36,7 +36,7 @@ const Navbar = () => {
               <SelectItem value="student">STUDENT</SelectItem>
             </SelectContent>
         </Select>
-        </div>
+        </div> */}
 
         {/* nav items */}
         <div className="items-center hidden gap-4 md:flex">

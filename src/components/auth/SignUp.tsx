@@ -14,29 +14,36 @@ import {
   SelectValue,
 } from "../ui/select";
 import { Button } from "../ui/button";
+import { useUser } from "@/zustand/store";
 
 const SignUp = () => {
-  const [username, setUsername] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [group, setGroup] = useState("");
-  const [role, setRole] = useState("");
+  const [username, setUsername] = useState<string>("");
+  const [email, setEmail] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
+  const [role, setRole] = useState<string>("");
   const [showPassword, setShowPassword] = useState(false);
 
   const toggelPasswordView = () => {
     setShowPassword((prev) => !prev);
   };
 
+  const {signUp, user } = useUser()
+
   const handleSubmit = (e: React.ChangeEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (!username || !password || !email || !group || !role) {
+    if (!username || !password || !email || !role) {
       return toast.error("All fields are required");
     }
-    console.log(username, null, password);
+    // Your API request here
+    signUp({username, email, password, role, created_at: Date.now()})
+    // user
+    console.log(user)
+    // Toast notification
+    toast.success("User created")
+    // State change
     setUsername("");
     setPassword("");
     setEmail("");
-    setGroup("");
     setRole("");
   };
   return (
@@ -119,26 +126,13 @@ const SignUp = () => {
                   <SelectValue placeholder="Role" />
                 </SelectTrigger>
                 <SelectContent>
+                  <SelectItem value="system-admin">System Admin</SelectItem>
+                  <SelectItem value="organisation admin">Organisation Admin</SelectItem>
+                  <SelectItem value="instructor">Instructor</SelectItem>
                   <SelectItem value="student">Student</SelectItem>
-                  <SelectItem value="teacher">Teacher</SelectItem>
                 </SelectContent>
               </Select>
             </div>
-
-            <div className="bg-transparent mt-4 flex rounded-sm items-center gap-2 bg-gray-100 px-2 py-2 max-w-[350px]">
-              <LiaCriticalRole size={18} color="gray" />
-              <Select onValueChange={(value) => setGroup(value)}>
-                <SelectTrigger>
-                  <SelectValue placeholder="Group" />
-                </SelectTrigger>
-                <SelectContent>
-                  {Array.from({length: 5}).map((_, idx:number) =>(
-                    <SelectItem key={idx} value={`${idx+1}`}>{idx+1}</SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
-            </div>
-
             <Button
               type="submit"
               className="bg-blue-600 text-white w-[350px] mt-4 py-1"

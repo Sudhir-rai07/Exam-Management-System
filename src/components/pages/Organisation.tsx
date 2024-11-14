@@ -5,10 +5,10 @@ import { Button } from "../ui/button";
 import { DataTable } from "@/dataTable/data-table";
 import {  organisationColumns } from "@/dataTable/columns";
 import AddOrganisationDialog from "../utils/AddOrganisationDialog";
-import { OrganisationType } from "@/Types/types";
+import { Organization } from "@/Types/types";
 import { useState } from "react";
 
-async function getData(): Promise<OrganisationType[]> {
+async function getData(): Promise<Organization[]> {
   // Fetch data from your API here.
   return organisationData;
 }

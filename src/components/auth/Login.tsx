@@ -3,13 +3,12 @@ import toast from "react-hot-toast";
 import { FaUser } from "react-icons/fa";
 import { IoMdEye, IoMdEyeOff } from "react-icons/io";
 import { Link } from "react-router-dom";
-import Navbar from "../Navbar";
 import Breadcrumbs from "../Breadcrumbs";
 import { Input } from "../ui/input";
 
 const Login = () => {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+  const [username, setUsername] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
   const [showPassword, setShowPassword] = useState(false);
   const [rememberPassword, setRememberPassword] = useState(false);
 
@@ -100,9 +99,9 @@ const Login = () => {
                   Remember password
                 </label>
               </div>
-              <span className="text-blue-500 transition cursor-pointer hover:underline">
+              <Link to={"/reset-password"} className="text-blue-500 transition cursor-pointer hover:underline">
                 Forgot password
-              </span>
+              </Link>
             </div>
 
             <button

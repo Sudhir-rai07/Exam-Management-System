@@ -9,10 +9,10 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
-import { useUserRole } from "@/zustand/store";
 import { Building2, ChevronUp, CopyCheck, FileQuestion, GraduationCap, Grid2X2, Info, LayoutGrid, Plus, Sheet, User, User2 } from "lucide-react";
 import { Link } from "react-router-dom";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "./ui/dropdown-menu";
+import { useUser } from "@/zustand/store";
 
 type MenuItemType = {
   title: string;
@@ -232,13 +232,13 @@ if(role === 'admin'){
 }
 
 export function AppSidebar() {
-    const {role} = useUserRole()
-    console.log(role)
+    const {user} = useUser()
+    console.log(user?.role)
     
     return (
     <Sidebar>
       {/* Select user Role */}
-      {sidebarContent(role)}
+      {sidebarContent(user.role)}
 
       <SidebarFooter>
           <SidebarMenu>
