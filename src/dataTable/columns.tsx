@@ -8,10 +8,11 @@ import {
 } from "@tanstack/react-table";
 import { Trash } from "lucide-react";
 import toast from "react-hot-toast";
+import { Link } from "react-router-dom";
 
 const instructorColumnHelper = createColumnHelper<User>();
 const organisationColumnHelper = createColumnHelper<Organization>();
-// const studentColumnHelper = createColumnHelper<StudentType>();
+const studentColumnHelper = createColumnHelper<User>();
 // const questionColumnHelper = createColumnHelper<Question>();
 
 export const organisationColumns: ColumnDef<Organization>[] = [
@@ -98,6 +99,9 @@ export const instructorColumns: ColumnDef<User>[] = [
   {
     accessorKey: "username",
     header: "Name",
+  },{
+    accessorKey: "email",
+    header: "Email",
   },
   {
     accessorKey: "role",
@@ -109,7 +113,7 @@ export const instructorColumns: ColumnDef<User>[] = [
     cell: ({ row }) => {
       const { deleteOrganization } = useOrganizationStore();
       return (
-        <span
+        <div
           onClick={() => {
             deleteOrganization(row.original.user_id);
             toast.success("Instructor removed");
@@ -117,68 +121,60 @@ export const instructorColumns: ColumnDef<User>[] = [
           className="flex items-center gap-2 text-red-500 cursor-pointer"
         >
           <Trash size={18} /> Remove
-        </span>
+        </div>
       );
     },
   }),
 ];
 
-// export const studentColumns: ColumnDef<StudentType>[] = [
-//   {
-//     id: "select",
-//     header: ({ table }) => (
-//       <Checkbox
-//         checked={
-//           table.getIsAllPageRowsSelected() ||
-//           (table.getIsSomePageRowsSelected() && "indeterminate")
-//         }
-//         onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
-//         aria-label="Select all"
-//       />
-//     ),
-//     cell: ({ row }) => (
-//       <Checkbox
-//         checked={row.getIsSelected()}
-//         onCheckedChange={(value) => row.toggleSelected(!!value)}
-//         aria-label="Select row"
-//       />
-//     ),
-//     enableSorting: false,
-//     enableHiding: false,
-//   },
-//   {
-//     accessorKey: "id",
-//     header: "Id",
-//   },
-//   {
-//     accessorKey: "name",
-//     header: "Name",
-//   },
-//   {
-//     accessorKey: "email",
-//     header: "Email",
-//   },
-//   {
-//     accessorKey: "group",
-//     header: "Group",
-//   },
-//   {
-//     accessorKey: "password",
-//     header: "Password",
-//   },
-//   {
-//     accessorKey: "last_login_time",
-//     header: "Last Login Time",
-//   },
-//   studentColumnHelper.display({
-//     id:"action",
-//     header: "Action",
-//     cell: ({row})=> (
-//       <span className="flex items-center gap-2 text-red-500 cursor-pointer"><Trash size={16} /> delete</span>
-//     )
-//   })
+export const studentColumns: ColumnDef<User>[] = [
+  {
+    id: "select",
+    header: ({ table }) => (
+      <Checkbox
+        checked={
+          table.getIsAllPageRowsSelected() ||
+          (table.getIsSomePageRowsSelected() && "indeterminate")
+        }
+        onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
+        aria-label="Select all"
+      />
+    ),
+    cell: ({ row }) => (
+      <Checkbox
+        checked={row.getIsSelected()}
+        onCheckedChange={(value) => row.toggleSelected(!!value)}
+        aria-label="Select row"
+      />
+    ),
+    enableSorting: false,
+    enableHiding: false,
+  },
+  {
+    accessorKey:"user_id",
+    header: "Student ID"
+  },
+  {
+    accessorKey: "username",
+    header: "Name",
+  },{
+    accessorKey: "last_login",
+    header: "Last Login",
+  },
+  {
+    accessorKey:"password",
+    header: "Password",
+  },
+  studentColumnHelper.display({
+    id:"action",
+    header: "Action",
+    cell: ({row})=> {
+            return(
+      <Link to={`/admin/student/${row.original.user_id}`} className="flex items-center gap-2 text-green-500 cursor-pointer"> Go to user</Link>
+    )}
+  })
 
-// ]
+]
 
 // export const questionColumns: ColumnDef<Question, unknown>[] = [
 //   {

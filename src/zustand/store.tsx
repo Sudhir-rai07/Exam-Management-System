@@ -1,6 +1,7 @@
+import { create } from 'zustand';
 import { Organization, User } from '@/Types/types';
 import orgaizationData from '@/dummyData/organisationData.json'
-import { create } from 'zustand';
+import studentData from '@/dummyData/studentData.json'
 
 type Usertore = {
   user: User ; // Initialize as null to indicate no user is signed in initially
@@ -93,3 +94,33 @@ export const useOrganizationAdminStore = create<OrganizationAdminStore>((set) =>
       admins: state.admins.filter((admin) => admin.user_id !== id),
     }))
 }));
+
+type StudentStoreType ={
+  students: User[];
+  addStudent: (newStudent: User) => void;
+  editStudent: (id: number|string, updatedStudentData: Partial<User>) => void;
+  removeStudent: (id: number|string) => void;
+}
+
+export const useStudentStore = create<StudentStoreType>((set)=>({
+  students: studentData,
+
+  addStudent: (newStudent: User) =>
+    set((state:StudentStoreType) => ({
+      students: [...state.students, newStudent],
+    })),
+
+  // Edit an existing student
+  editStudent: (id: number | string, updatedStudentData: Partial<User>) =>
+    set((state:StudentStoreType) => ({
+      students: state.students.map((student) =>
+        student.user_id === id ? { ...student, ...updatedStudentData } : student
+      ),
+    })),
+
+  // Remove a student by ID
+  removeStudent: (id: number | string) =>
+    set((state:StudentStoreType) => ({
+      students: state.students.filter((student) => student.user_id !== id),
+    })),
+}))

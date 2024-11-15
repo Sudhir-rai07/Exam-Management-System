@@ -69,12 +69,10 @@ import OrganizationList from './components/pages/organization/Organization'
 import Org from './components/pages/organization/Org'
 import OrganizationStatics from './components/pages/organization/OrganizationStatics'
 import Instructors from './components/pages/instructors/Instructors'
-// const Grade = lazy(()=> import('./components/Grade'))
+import Students from './components/pages/students/Students'
+import Student from './components/pages/students/Student'
 
-// import Instructors from './components/pages/Instructors'
 
-// import Students from './components/pages/Students'
-const Students = lazy(()=> import('./components/pages/Students'))
 
 
 const App = () => {
@@ -84,7 +82,6 @@ const App = () => {
       <Routes>
         <Route path='/' element={<Home />}>
             {/* <Route index element={<EmptyPage />} />
-            <Route path='admin/students' element={<Students />} />
             <Route path='/admin/test-bank' element={<TestBank />} />
             <Route path='teacher/exam-info' element={<ExamInfo />} />
             <Route path='/teacher/exam-info/create/' element={<CreateExam />}>
@@ -98,8 +95,11 @@ const App = () => {
             <Route path='admin/organisation/:id' element={<Org />} />
             <Route path='admin/organisation/:id/statistics' element={<OrganizationStatics />} />
              <Route path='admin/instructors' element={<Instructors />} />
+
+             <Route path='admin/students' element={<Students />} />
+             <Route path='admin/student/:id' element={<Student />} />
            {/* <Route path='student/grade' element={<Grade />} />
-            <Route path='student/exam' element={<StudentExam />} />
+             <Route path='student/exam' element={<StudentExam />} />
             <Route path='teacher/validate-answers' element={<ValidateAnswers />} />
             <Route path='teacher/questions' element={<Questions />} /> */}
         </Route>

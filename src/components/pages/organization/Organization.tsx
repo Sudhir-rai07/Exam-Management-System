@@ -5,8 +5,9 @@ import { Button } from "../../ui/button";
 import { DataTable } from "@/dataTable/data-table";
 import {  organisationColumns } from "@/dataTable/columns";
 import AddOrganisationDialog from "../../utils/AddOrganisationDialog";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Organization } from "@/Types/types";
+import { useOrganizationStore } from "@/zustand/store";
 
 async function getData(): Promise<Organization[]> {
   // Fetch data from your API here.
@@ -18,6 +19,11 @@ const data = await getData();
 const OrganizationList = () => {
 
   const  [searchQuery, setSearchQuery] = useState<string>("")
+  const {organizations} = useOrganizationStore()
+  useEffect(()=>{
+        console.log(organizations)
+  }, [organizations])
+  console.log(organizations)
 
   return (
     <section className="w-full h-full">
@@ -31,7 +37,7 @@ const OrganizationList = () => {
       </div>
 
       <div className="mt-4 overflow-x-scroll overflow-y-scroll h-1/2">
-        <DataTable columns={organisationColumns} data={data}/>
+        <DataTable columns={organisationColumns} data={organizations}/>
       </div>
     </section>
   );

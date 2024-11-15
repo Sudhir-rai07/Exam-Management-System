@@ -5,7 +5,7 @@ export interface User {
     password: string;
     role: string;
     created_at?: string;
-    last_login?: Date;
+    last_login?: string;
 }
 
 export interface StudentGrade {
@@ -67,4 +67,10 @@ export interface Organization {
     admins?: User[];
     instructors?: User[];
     students?: User[];
+}
+
+export interface StudentGroup {
+    group_id: number | string;
+    name: string;
+    students: User[];
 }
