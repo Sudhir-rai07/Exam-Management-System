@@ -11,32 +11,33 @@ import {
 } from "./ui/dropdown-menu";
 import { Input } from "./ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "./ui/select";
-import { useUser } from "@/zustand/store";
+import { useState } from "react";
 
 
 const Navbar = () => {
-  // const {role,setUserRole} = useUser()  
+  const [role,setUserRole] = useState("")  
 
   return (
-    <header className="sticky top-0 bg-gray-100">
+    <header className="sticky top-0 light:bg-gray-100">
       <nav className="z-50 flex items-center justify-between w-full py-2 shadow lg:px-4">
         <Link to={"/"} className="pl-2 text-2xl font-semibold">
           EMS
         </Link>
 
         {/* Select user Role */}
-        {/* <div className="max-w-[300px]">
+        <div className="max-w-[300px]">
         <Select onValueChange={(value) => setUserRole(value)}>
             <SelectTrigger>
               <SelectValue placeholder={role.toUpperCase()} />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="admin">ADMIN</SelectItem>
-              <SelectItem value="teacher">TEACHER</SelectItem>
+              <SelectItem value="organizationAdmin">ORG ADMIN</SelectItem>
+              <SelectItem value="systemAdmin">SYSTEM ADMIN</SelectItem>
+              <SelectItem value="instructor">INSTRUCTOR</SelectItem>
               <SelectItem value="student">STUDENT</SelectItem>
             </SelectContent>
         </Select>
-        </div> */}
+        </div>
 
         {/* nav items */}
         <div className="items-center hidden gap-4 md:flex">

@@ -1,5 +1,5 @@
 export interface User {
-    user_id?: number | string;
+    user_id: number | string;
     username: string;
     email: string;
     password: string;
@@ -64,7 +64,7 @@ export interface Organization {
     org_id: number | string;
     name: string;
     description: string;
-    admins : User[];
-    instructors: User[];
-    students: User[];
+    admins?: User[];
+    instructors?: User[];
+    students?: User[];
 }

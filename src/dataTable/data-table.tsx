@@ -31,8 +31,6 @@ interface DataTableProps<TData, TValue> {
 export function DataTable<TData, TValue>({
   columns,
   data,
-  globalFilter,
-  setGlobalFilter
 }: DataTableProps<TData, TValue>) {
 
   
@@ -40,12 +38,12 @@ export function DataTable<TData, TValue>({
     data,
     columns,
     state:{
-      globalFilter:globalFilter
+      // globalFilter:globalFilter
     },
     getCoreRowModel: getCoreRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
     getFilteredRowModel: getFilteredRowModel(),
-    onGlobalFilterChange: setGlobalFilter
+    // onGlobalFilterChange: setGlobalFilter
   })
 
  

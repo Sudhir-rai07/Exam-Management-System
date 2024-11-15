@@ -1,5 +1,5 @@
-import Organisation from '@/components/pages/Organisation';
 import { Organization, User } from '@/Types/types';
+import orgaizationData from '@/dummyData/organisationData.json'
 import { create } from 'zustand';
 
 type Usertore = {
@@ -38,7 +38,7 @@ export const useUser = create<Usertore>((set) => ({
 
 
 export const useOrganizationStore = create<OrganizationStore>((set)=>({
-    organizations: [],
+    organizations: orgaizationData,
 
 
     addOrganization: (newOrganization) => set((state)=>({
@@ -57,3 +57,32 @@ export const useOrganizationStore = create<OrganizationStore>((set)=>({
     }))
 
 }))
+
+
+type OrganizationAdminStore = {
+  admins: User[];
+  addAdmin: (newAdmin: User) => void;
+  editAdmin: (id: number|string, updatedAdminData: Partial<User>) => void;
+  removeAdmin: (id: number|string) => void;
+};
+
+export const useOrganizationAdminStore = create<OrganizationAdminStore>((set) => ({
+  admins: [],
+
+  addAdmin: (newAdmin: User) =>
+    set((state) => ({
+      admins: [...state.admins, newAdmin],
+    })),
+
+  editAdmin: (id: number | string, updatedAdminData) =>
+    set((state) => ({
+      admins: state.admins.map((admin: User) =>
+        admin.user_id === id ? { ...admin, ...updatedAdminData } : admin
+      ),
+    })),
+
+  removeAdmin: (id) =>
+    set((state) => ({
+      admins: state.admins.filter((admin) => admin.user_id !== id),
+    })),
+}));

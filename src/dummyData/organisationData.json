@@ -11,6 +11,13 @@
         "password": "gibrishhh",
         "role": "organisationAdmin",
         "created_at": "2022-01-01T00:00:00.000"
+      },{
+        "user_id": 101,
+        "username": "user_101",
+        "email": "user_101@example.com",
+        "password": "gibrishhh",
+        "role": "organisationAdmin",
+        "created_at": "2022-01-01T00:00:00.000"
       }
     ],
     "instructors": [

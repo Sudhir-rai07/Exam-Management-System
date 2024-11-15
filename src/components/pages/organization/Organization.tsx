@@ -1,12 +1,12 @@
-import OrganisationQueryForm from "../utils/OrganisationQueryForm";
-import organisationData from "@/dummyData/organisationData.json";
+import OrganisationQueryForm from "../../utils/OrganisationQueryForm";
+import organisationData from '@/dummyData/organisationData.json'
 import { Download } from "lucide-react";
-import { Button } from "../ui/button";
+import { Button } from "../../ui/button";
 import { DataTable } from "@/dataTable/data-table";
 import {  organisationColumns } from "@/dataTable/columns";
-import AddOrganisationDialog from "../utils/AddOrganisationDialog";
-import { Organization } from "@/Types/types";
+import AddOrganisationDialog from "../../utils/AddOrganisationDialog";
 import { useState } from "react";
+import { Organization } from "@/Types/types";
 
 async function getData(): Promise<Organization[]> {
   // Fetch data from your API here.
@@ -15,7 +15,7 @@ async function getData(): Promise<Organization[]> {
 
 const data = await getData();
 
-const Organisation = () => {
+const OrganizationList = () => {
 
   const  [searchQuery, setSearchQuery] = useState<string>("")
 
@@ -31,10 +31,10 @@ const Organisation = () => {
       </div>
 
       <div className="mt-4 overflow-x-scroll overflow-y-scroll h-1/2">
-        <DataTable columns={organisationColumns} data={data} globalFilter={searchQuery} setGlobalFilter={setSearchQuery}/>
+        <DataTable columns={organisationColumns} data={data}/>
       </div>
     </section>
   );
 };
 
-export default Organisation;
+export default OrganizationList;

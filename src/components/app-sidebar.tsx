@@ -64,20 +64,26 @@ const studentMenuItems: MenuItemType[] = [
   }
 ]
 
-const adminMenuItmesUser : MenuItemType[] = [
+const systemAdminMenuItmesUser : MenuItemType[] = [
+        // {
+        //   title: "Instructors",
+        //   url: "/admin/instructors",
+        //   icon: <User />,
+        // },{
+        //   title: "Students",
+        //   url: "/admin/students",
+        //   icon: <User />,
+        // },
         {
-          title: "Instructors",
-          url: "/admin/instructors",
-          icon: <User />,
-        },{
-          title: "Students",
-          url: "/admin/students",
-          icon: <User />,
-        },{
           title: "Organisation",
           url: "/admin/organisation",
           icon: <Building2 />,
         },
+        {
+            title: "Admins",
+            url: "/admin/organisations",
+            icon: <User />,
+          },
 ]
 
 const adminMenuItmesExam : MenuItemType[] = [
@@ -176,7 +182,7 @@ if(role === 'student'){
   )
 }
 
-if(role === 'admin'){
+if(role === 'systemAdmin'){
   return (
     <>
     <SidebarContent>
@@ -187,7 +193,7 @@ if(role === 'admin'){
         </SidebarGroupLabel>
         <SidebarGroupContent className="pl-4">
           <SidebarMenu>
-            {adminMenuItmesUser.map((item) => {
+            {systemAdminMenuItmesUser.map((item) => {
               return (
                 <SidebarMenuItem key={item.title}>
                   {/* {item.title} */}

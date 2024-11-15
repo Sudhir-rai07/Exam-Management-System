@@ -2,12 +2,15 @@ import { useState } from "react";
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";
 import { RotateCcw, Search } from "lucide-react";
+import { useOrganizationStore } from "@/zustand/store";
 
 const OrganisationQueryForm = ({setQuery}:{setQuery: React.Dispatch<React.SetStateAction<string>>}) => {
     const [organisationId, setOrganisationId] = useState("");
     const [organisationName, setOrganisationName] = useState("");
     const [email, setEmail] = useState("");
     const [loginTime, setLoginTime] = useState("");
+
+    const {addOrganization} = useOrganizationStore()
 
     const query = organisationId || organisationName || email || loginTime;
     const handleSubmit = (e: React.ChangeEvent<HTMLFormElement>) =>{
@@ -28,7 +31,8 @@ const OrganisationQueryForm = ({setQuery}:{setQuery: React.Dispatch<React.SetSta
             <div className="mt-8">
                 <form onSubmit={handleSubmit} className="query-form">
                     <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-                        <div className="gap-2 md:flex md:items-center">
+
+                    <div className="gap-2 md:flex md:items-center">
                             <label htmlFor="organisation-id">ID</label>
                             <Input
                                 type="text"

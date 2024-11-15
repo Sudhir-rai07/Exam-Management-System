@@ -4,61 +4,71 @@ import { ThemeProvider } from './components/theme-provider'
 
 // import StudentExam from './components/StudentExam'
 import StudentExam from './components/StudentExam'
+// const StudentExam = lazy(()=> import('./components/StudentExam'))
+
 import ThirdPage from './components/pages/CreateExam/ThirdPage'
+// const ThirdPage = lazy(()=> import('./components/pages/CreateExam/ThirdPage'))
+
 import PageFour from './components/pages/CreateExam/PageFour'
-
-// import UpdateProfile from './components/pages/user/UpdateProfile'
-const UpdateProfile = lazy(()=> import('./components/pages/user/UpdateProfile'))
+// const PageFour = lazy(()=> import('./components/pages/CreateExam/PageFour'))
 
 
-
-// import ResetPassword from './components/auth/ResetPassword'
-const ResetPassword = lazy(()=> import('./components/auth/ResetPassword'))
-
-
-// import CreateExam from './components/pages/CreateExam/CreateExam'
-const CreateExam = lazy(()=> import('./components/pages/CreateExam/CreateExam'))
+import UpdateProfile from './components/pages/user/UpdateProfile'
+// const UpdateProfile = lazy(()=> import('./components/pages/user/UpdateProfile'))
 
 
-// import FirstPage from './components/pages/CreateExam/FirstPage'
-const FirstPage = lazy(()=> import('./components/pages/CreateExam/FirstPage'))
 
-// import SecondPage from './components/pages/CreateExam/SecondPage'
-const SecondPage = lazy(()=> import('./components/pages/CreateExam/SecondPage'))
+import ResetPassword from './components/auth/ResetPassword'
+// const ResetPassword = lazy(()=> import('./components/auth/ResetPassword'))
 
 
-// import Questions from './components/pages/Questions'
-const Questions = lazy(()=> import('./components/pages/Questions'))
+import CreateExam from './components/pages/CreateExam/CreateExam'
+// const CreateExam = lazy(()=> import('./components/pages/CreateExam/CreateExam'))
 
-// import ValidateAnswers from './components/pages/ValidateAnswers'
-const ValidateAnswers = lazy(()=> import('./components/pages/ValidateAnswers'))
 
-// import Login from './components/auth/Login'
-const Login = lazy(()=> import('./components/auth/Login'))
+import FirstPage from './components/pages/CreateExam/FirstPage'
+// const FirstPage = lazy(()=> import('./components/pages/CreateExam/FirstPage'))
 
-// import SignUp from './components/auth/SignUp'
-const SignUp = lazy(()=> import('./components/auth/SignUp'))
+import SecondPage from './components/pages/CreateExam/SecondPage'
+// const SecondPage = lazy(()=> import('./components/pages/CreateExam/SecondPage'))
 
-// import Home from './components/Home'
-const Home = lazy(()=> import('./components/Home'))
 
-// import Profile from './components/pages/Profile'
-const Profile = lazy(()=> import('./components/pages/user/Profile'))
+import Questions from './components/pages/Questions'
+// const Questions = lazy(()=> import('./components/pages/Questions'))
 
-// import EmptyPage from './components/pages/Home/EmptyPage'
-const EmptyPage = lazy(()=> import('./components/pages/Home/EmptyPage'))
+import ValidateAnswers from './components/pages/ValidateAnswers'
+// const ValidateAnswers = lazy(()=> import('./components/pages/ValidateAnswers'))
 
-// import ExamInfo from './components/pages/ExamInfo'
-const ExamInfo = lazy(()=> import('./components/pages/ExamInfo'))
+import Login from './components/auth/Login'
+// const Login = lazy(()=> import('./components/auth/Login'))
 
-// import TestBank from './components/pages/TestBank'
-const TestBank = lazy(()=> import('./components/pages/TestBank'))
+import SignUp from './components/auth/SignUp'
+// const SignUp = lazy(()=> import('./components/auth/SignUp'))
 
-// import Organisation from './components/pages/Organisation'
-const Organisation = lazy(()=> import('./components/pages/Organisation'))
+import Home from './components/Home'
+// const Home = lazy(()=> import('./components/Home'))
 
-// import Grade from './components/Grade'
-const Grade = lazy(()=> import('./components/Grade'))
+import Profile from './components/pages/user/Profile'
+// const Profile = lazy(()=> import('./components/pages/user/Profile'))
+
+import EmptyPage from './components/pages/Home/EmptyPage'
+// const EmptyPage = lazy(()=> import('./components/pages/Home/EmptyPage'))
+
+import ExamInfo from './components/pages/ExamInfo'
+// const ExamInfo = lazy(()=> import('./components/pages/ExamInfo'))
+
+import TestBank from './components/pages/TestBank'
+// const TestBank = lazy(()=> import('./components/pages/TestBank'))
+
+import Organisation from './components/pages/organization/Organization'
+// const Organisation = lazy(()=> import('./components/pages/Organisation'))
+
+import Grade from './components/Grade'
+import Organizations from './components/pages/organization/Organizations'
+import OrganizationList from './components/pages/organization/Organization'
+import Org from './components/pages/organization/Org'
+import OrganizationStatics from './components/pages/organization/OrganizationStatics'
+// const Grade = lazy(()=> import('./components/Grade'))
 
 // import Instructors from './components/pages/Instructors'
 const Instructors = lazy(()=> import('./components/pages/Instructors'))
@@ -73,7 +83,7 @@ const App = () => {
     <ThemeProvider defaultTheme='dark' storageKey='vite-ui-theme'>
       <Routes>
         <Route path='/' element={<Home />}>
-            <Route index element={<EmptyPage />} />
+            {/* <Route index element={<EmptyPage />} />
             <Route path='admin/students' element={<Students />} />
             <Route path='/admin/test-bank' element={<TestBank />} />
             <Route path='teacher/exam-info' element={<ExamInfo />} />
@@ -82,13 +92,16 @@ const App = () => {
                   <Route path={'select-question'} element={<SecondPage />} />
                   <Route path={'preview'} element={<ThirdPage />} />
                   <Route path={'success'} element={<PageFour />} />
-            </Route>
-            <Route path='admin/organisation' element={<Organisation />} />
-            <Route path='admin/instructors' element={<Instructors />} />
+            </Route> */}
+            <Route path='admin/organisation' element={<OrganizationList />} />
+            <Route path='admin/organisations' element={<Organizations />} />
+            <Route path='admin/organisation/:id' element={<Org />} />
+            <Route path='/admin/organisation/:id/statistics' element={<OrganizationStatics />} />
+            {/* <Route path='admin/instructors' element={<Instructors />} />
             <Route path='student/grade' element={<Grade />} />
             <Route path='student/exam' element={<StudentExam />} />
             <Route path='teacher/validate-answers' element={<ValidateAnswers />} />
-            <Route path='teacher/questions' element={<Questions />} />
+            <Route path='teacher/questions' element={<Questions />} /> */}
         </Route>
         <Route path='/login' element={<Login />}/>
         <Route path='/signup' element={<SignUp />}/>

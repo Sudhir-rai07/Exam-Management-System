@@ -10,38 +10,46 @@ import { Plus } from "lucide-react"
 import { Label } from "../ui/label"
 import { Input } from "../ui/input"
 import { Button } from "../ui/button"
-import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from "../ui/select"
 import { useState } from "react"
+import { Textarea } from "../ui/textarea"
+import toast from "react-hot-toast"
+import { useOrganizationStore } from "@/zustand/store"
 
 const AddOrganisationDialog = ({headerText}: {headerText: string}) => {
-    const [email, setEmail] = useState("");
+    const [id, setId] = useState<number>(0);
     const [name, setName] = useState("");
     const [password, setPassword] = useState("");
-    const [group, setGroup] = useState("")
+    const [description, setDescription] = useState("")
+
+    const {addOrganization,organizations} = useOrganizationStore()
   
-    const btnDisable = !email || !name || !password || !group
+    const btnDisable = !id || !name || !password || !description
     const handleSubmit = (e: React.ChangeEvent<HTMLFormElement>) => {
       e.preventDefault()
       // Add logic to handle form submission
-      console.log({email, name, group, password})
+
+      addOrganization({name, description,org_id:id})
+      console.log(organizations)
+      toast.success("Org created")
+      console.log({id, name, description, password})
     }
 
     const handleRest = () => {
-        setEmail("")
+        setId(0)
         setName("")
-        setGroup("")
+        setDescription("")
         setPassword("")
     }
   
     return (
-      <Dialog >
-        <DialogTrigger asChild>
+      <Dialog>
+        <DialogTrigger  asChild>
           <Button variant="outline" className="text-white bg-blue-500">
             <Plus />
             New
           </Button>
         </DialogTrigger>
-        <DialogContent className="">
+        <DialogContent className="" >
           <DialogHeader>
             <DialogTitle className="text-xl">Add {headerText}</DialogTitle>
           </DialogHeader>
@@ -60,36 +68,25 @@ const AddOrganisationDialog = ({headerText}: {headerText: string}) => {
             </div>
             <div className="grid items-center grid-cols-4 gap-4">
               <Label htmlFor="email" className="text-right">
-                Email
+                Id
               </Label>
               <Input
-                id="email"
+              type="number"
+                id="id"
                 placeholder="Enter email"
                 className="col-span-3"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                value={id}
+                onChange={(e) => setId(parseInt(e.target.value))}
               />
             </div>
   
-            <div className="grid items-center grid-cols-4 gap-4">
+            <div className="grid items-center w-full grid-cols-4 gap-4">
               <Label htmlFor="group" className="text-right">
-                Group
+                Description
               </Label>
-              <Select onValueChange={value => setGroup(value)}>
-                <SelectTrigger className="col-span-3">
-                  <SelectValue placeholder="Select group" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectGroup>
-                    <SelectLabel>Groups</SelectLabel>
-                    <SelectItem value="1">1</SelectItem>
-                    <SelectItem value="2">2</SelectItem>
-                    <SelectItem value="3">3</SelectItem>
-                    <SelectItem value="4">4</SelectItem>
-                    <SelectItem value="5">5</SelectItem>
-                  </SelectGroup>
-                </SelectContent>
-              </Select>
+              <Textarea value={description} onChange={(e)=> setDescription(e.target.value)} placeholder="Description" className="w-[340px]">
+                
+              </Textarea>
             </div>
   
             <div className="grid items-center grid-cols-4 gap-4">
