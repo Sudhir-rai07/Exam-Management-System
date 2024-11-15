@@ -34,8 +34,8 @@ const OrganizationStatics = () => {
     <div className="w-full h-full">
         <h1 className="text-lg font-semibold">Organization statistics</h1>
         <div>
-            <p>{org1.instructors?.length}</p>
-            <p>{org1.students?.length}</p>
+            <p><span className="text-sm font-semibold text-gray-400">Instructors: </span>{org1.instructors?.length}</p>
+            <p><span className="text-sm font-semibold text-gray-400">Students: </span>{org1.students?.length}</p>
 
             
                 <PieChartComp chartConfig={chartConfig} chartData={chartData}/>

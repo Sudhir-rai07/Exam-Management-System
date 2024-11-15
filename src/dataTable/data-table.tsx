@@ -16,34 +16,27 @@ import {
   TableRow,
 } from "@/components/ui/table"
 import { Button } from "@/components/ui/button"
-import { SetStateAction, useState } from "react"
 import { Dialog } from "@radix-ui/react-dialog"
 import { DialogContent, DialogTrigger } from "@/components/ui/dialog"
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
   data: TData[];
-  globalFilter: string | number; // Optional, so add ? if you don't always use it
-  setGlobalFilter: React.Dispatch<SetStateAction<string | number>>
 }
 
 
 export function DataTable<TData, TValue>({
   columns,
-  data,
+  data
 }: DataTableProps<TData, TValue>) {
 
   
   const table = useReactTable({
     data,
     columns,
-    state:{
-      // globalFilter:globalFilter
-    },
     getCoreRowModel: getCoreRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
     getFilteredRowModel: getFilteredRowModel(),
-    // onGlobalFilterChange: setGlobalFilter
   })
 
  
@@ -71,9 +64,8 @@ export function DataTable<TData, TValue>({
         <TableBody>
           {table.getRowModel().rows?.length ? (
             table.getRowModel().rows.map((row) => (
-              <Dialog>
+              <Dialog key={row.id}>
               <TableRow
-                key={row.id}
                 data-state={row.getIsSelected() && "selected"}
               >
                 {row.getVisibleCells().map((cell) => (

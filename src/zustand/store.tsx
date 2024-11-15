@@ -13,6 +13,7 @@ type OrganizationStore = {
      addOrganization : (newOrganosation: Organization) => void;
      updateOrganization: (orgId: number|string , updatedOrg: Organization) => void;
      deleteOrganization: (orgId: number | string) => void;
+     addInstructor: (orgId: number|string, instructor: User) => void
 }
 
 const userData:User = {
@@ -54,6 +55,12 @@ export const useOrganizationStore = create<OrganizationStore>((set)=>({
 
     deleteOrganization: (orgId) => set((state)=> ({
           organizations: state.organizations.filter((org)=> org.org_id !== orgId)
+    })),
+
+    addInstructor: (orgId, instructor) => set((state)=>({
+      organizations: state.organizations.map((org: Organization)=>(
+        org.org_id === orgId ? { ...org, instructors: [...org.instructors || [], instructor] } : org
+      ))
     }))
 
 }))
@@ -84,5 +91,5 @@ export const useOrganizationAdminStore = create<OrganizationAdminStore>((set) =>
   removeAdmin: (id) =>
     set((state) => ({
       admins: state.admins.filter((admin) => admin.user_id !== id),
-    })),
+    }))
 }));
