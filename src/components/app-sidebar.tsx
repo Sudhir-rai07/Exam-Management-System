@@ -139,7 +139,7 @@ const organizationAdminMenuItmes: MenuItemType[] = [
   },
   {
     title: "Student Groups",
-    url: "/admin/student-group",
+    url: "/admin/student/groups",
     icon: <Group />,
   },
   {

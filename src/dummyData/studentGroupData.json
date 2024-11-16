@@ -1,0 +1,49 @@
+[
+    {
+        "group_id": 101,
+        "name": "GroupOne",
+        "students": [
+            {
+                "user_id": 1,
+                "username": "john snow",
+                "email": "johnsnow@example.com",
+                "password": "password123",
+                "role": "student",
+                "created_at": "2022-01-01T00:00:00.000",
+                "last_login": "2023-09-22"
+              },{
+                "user_id": 1,
+                "username": "john snow",
+                "email": "johnsnow@example.com",
+                "password": "password123",
+                "role": "student",
+                "created_at": "2022-01-01",
+                "last_login": "2023-09-22"
+              },{
+                "user_id": 1,
+                "username": "john snow",
+                "email": "johnsnow@example.com",
+                "password": "password123",
+                "role": "student",
+                "created_at": "2022-01-01",
+                "last_login": "2023-09-22"
+              },{
+                "user_id": 1,
+                "username": "john snow",
+                "email": "johnsnow@example.com",
+                "password": "password123",
+                "role": "student",
+                "created_at": "2022-01-01",
+                "last_login": "2023-09-22"
+              },{
+                "user_id": 1,
+                "username": "john snow",
+                "email": "johnsnow@example.com",
+                "password": "password123",
+                "role": "student",
+                "created_at": "2022-01-01",
+                "last_login": "2023-09-22"
+              }
+        ]
+    }
+]

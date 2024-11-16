@@ -1,7 +1,8 @@
 import { create } from 'zustand';
-import { Organization, User } from '@/Types/types';
+import { Organization, StudentGroup, User } from '@/Types/types';
 import orgaizationData from '@/dummyData/organisationData.json'
 import studentData from '@/dummyData/studentData.json'
+import studentGroupData from '@/dummyData/studentGroupData.json'
 
 type Usertore = {
   user: User ; // Initialize as null to indicate no user is signed in initially
@@ -124,3 +125,57 @@ export const useStudentStore = create<StudentStoreType>((set)=>({
       students: state.students.filter((student) => student.user_id !== id),
     })),
 }))
+
+
+type SudentGroupType = {
+  groups : StudentGroup[];
+  addStudent: (groupId: number|string, newStudent: User) => void;
+  removeStudent: (groupId: number|string, studentId:number|string) => void;
+  editStudent: (groupId: number|string, studentId: number|string, updatedStudentData: Partial<User>) => void;
+}
+
+export const useStudentGroupStore = create<SudentGroupType>((set)=>({
+  groups: studentGroupData,
+
+  //Add a student to a group
+  addStudent: (groupId, newStudent) =>
+    set((state) => ({
+      groups: state.groups.map((group) =>
+        group.group_id === groupId
+          ? { ...group, students: [...group.students, newStudent] }
+          : group
+      ),
+    })),
+
+  // Remove a student from a specific group
+  removeStudent: (groupId, studentId) =>
+    set((state) => ({
+      groups: state.groups.map((group) =>
+        group.group_id === groupId
+          ? {
+              ...group,
+              students: group.students.filter(
+                (student) => student.user_id !== studentId
+              ),
+            }
+          : group
+      ),
+    })),
+
+    // Edit a student's details in a specific group
+  editStudent: (groupId, studentId, updatedStudentData) =>
+    set((state) => ({
+      groups: state.groups.map((group) =>
+        group.group_id === groupId
+          ? {
+              ...group,
+              students: group.students.map((student) =>
+                student.user_id === studentId
+                  ? { ...student, ...updatedStudentData }
+                  : student
+              ),
+            }
+          : group
+      ),
+    })),
+}));

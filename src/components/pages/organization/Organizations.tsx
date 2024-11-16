@@ -13,7 +13,7 @@ const Organizations = () => {
             organizations.map((org: Organization)=>{
 
                 return (
-                    <div key={org.org_id} className="max-w-[400px] w-full flex items-center justify-start border-2 px-4 py-2 rounded-md">
+                    <div key={org.org_id} className="max-w-[400px] shadow-md w-full flex items-center justify-start px-4 py-2 rounded-md">
                         <Link to={`/admin/organisation/${org.org_id}`} className="">
                         <p className="font-semibold text-black"><span className="text-gray-400">OrgId:</span> {org.org_id}</p>
                         <p className="font-semibold text-black"><span className="text-gray-400">OrgName:</span> {org.name}</p>

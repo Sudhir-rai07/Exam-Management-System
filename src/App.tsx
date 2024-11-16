@@ -71,6 +71,8 @@ import OrganizationStatics from './components/pages/organization/OrganizationSta
 import Instructors from './components/pages/instructors/Instructors'
 import Students from './components/pages/students/Students'
 import Student from './components/pages/students/Student'
+import StudentGroups from './components/pages/studentGroup/StudentGroups'
+import StudentGroup from './components/pages/studentGroup/StudentGroup'
 
 
 
@@ -98,6 +100,9 @@ const App = () => {
 
              <Route path='admin/students' element={<Students />} />
              <Route path='admin/student/:id' element={<Student />} />
+
+             <Route path='admin/student/groups' element={<StudentGroups />} />
+             <Route path='admin/student/groups/:id' element={<StudentGroup />} />
            {/* <Route path='student/grade' element={<Grade />} />
              <Route path='student/exam' element={<StudentExam />} />
             <Route path='teacher/validate-answers' element={<ValidateAnswers />} />

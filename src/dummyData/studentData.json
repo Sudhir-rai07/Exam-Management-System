@@ -16,8 +16,8 @@
     "created_at": "2022-01-01",
     "last_login": "2023-09-22"
   },{
-    "user_id": 1,
-    "username": "john snow",
+    "user_id": 2,
+    "username": "john knows",
     "email": "johnsnow@example.com",
     "password": "password123",
     "role": "student",

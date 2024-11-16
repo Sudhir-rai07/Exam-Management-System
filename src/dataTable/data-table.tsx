@@ -5,7 +5,7 @@ import {
   getPaginationRowModel,
   getFilteredRowModel,
   useReactTable,
-} from "@tanstack/react-table"
+} from "@tanstack/react-table";
 
 import {
   Table,
@@ -14,32 +14,28 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/components/ui/table"
-import { Button } from "@/components/ui/button"
-import { Dialog } from "@radix-ui/react-dialog"
-import { DialogContent, DialogTrigger } from "@/components/ui/dialog"
+} from "@/components/ui/table";
+import { Button } from "@/components/ui/button";
+import { Dialog } from "@radix-ui/react-dialog";
+import { DialogContent, DialogTrigger } from "@/components/ui/dialog";
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
   data: TData[];
 }
 
-
 export function DataTable<TData, TValue>({
   columns,
-  data
+  data,
 }: DataTableProps<TData, TValue>) {
-
-  
   const table = useReactTable({
     data,
     columns,
     getCoreRowModel: getCoreRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
     getFilteredRowModel: getFilteredRowModel(),
-  })
+  });
 
- 
   return (
     <div className="flex flex-col border rounded-md">
       <Table>
@@ -56,7 +52,7 @@ export function DataTable<TData, TValue>({
                           header.getContext()
                         )}
                   </TableHead>
-                )
+                );
               })}
             </TableRow>
           ))}
@@ -64,28 +60,17 @@ export function DataTable<TData, TValue>({
         <TableBody>
           {table.getRowModel().rows?.length ? (
             table.getRowModel().rows.map((row) => (
-              <Dialog key={row.id}>
-              <TableRow
-                data-state={row.getIsSelected() && "selected"}
-              >
+              <TableRow key={row.id} data-state={row.getIsSelected() && "selected"}>
                 {row.getVisibleCells().map((cell) => (
-                  
                   <TableCell key={cell.id}>
-                  <DialogTrigger> {flexRender(cell.column.columnDef.cell, cell.getContext())}</DialogTrigger> 
+                      {" "}
+                      {flexRender(
+                        cell.column.columnDef.cell,
+                        cell.getContext()
+                      )}
                   </TableCell>
                 ))}
               </TableRow>
-
-              <DialogContent>
-              {row.getVisibleCells().map((cell) => (
-                  
-                  <TableCell key={cell.id}>
-                   {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                  </TableCell>
-                ))}
-              </DialogContent>
-
-              </Dialog>
             ))
           ) : (
             <TableRow>
@@ -98,11 +83,31 @@ export function DataTable<TData, TValue>({
       </Table>
 
       <div className="flex gap-2 mt-4 ml-auto">
-        <Button onClick={()=> table.firstPage()} disabled={!table.getCanPreviousPage()}>{"<<"}</Button>
-        <Button onClick={()=> table.previousPage()} disabled={!table.getCanPreviousPage()}>{"<"}</Button>
-        <Button onClick={()=> table.nextPage()} disabled={!table.getCanNextPage()}>{">"}</Button>
-        <Button onClick={()=> table.lastPage()} disabled={!table.getCanNextPage()}>{">>"}</Button>
+        <Button
+          onClick={() => table.firstPage()}
+          disabled={!table.getCanPreviousPage()}
+        >
+          {"<<"}
+        </Button>
+        <Button
+          onClick={() => table.previousPage()}
+          disabled={!table.getCanPreviousPage()}
+        >
+          {"<"}
+        </Button>
+        <Button
+          onClick={() => table.nextPage()}
+          disabled={!table.getCanNextPage()}
+        >
+          {">"}
+        </Button>
+        <Button
+          onClick={() => table.lastPage()}
+          disabled={!table.getCanNextPage()}
+        >
+          {">>"}
+        </Button>
       </div>
     </div>
-  )
+  );
 }
