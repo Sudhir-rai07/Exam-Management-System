@@ -5,13 +5,9 @@ import QuestionsQueryForm from "../utils/QuestionsQueryForm"
 import { DataTable } from "@/dataTable/data-table"
 import { questionColumns } from "@/dataTable/columns"
 import { useState } from "react"
-import { questions } from "@/dummyData/examData"
+import questionData from '@/dummyData/questionData.json'
 
-async function getData() {
-    return questions
-}
 
-const data = await getData()
 const Questions = () => {
   const [query, setQuery] = useState<string | number>("")
   return (
@@ -26,7 +22,7 @@ const Questions = () => {
       </div>
 
       <div className="pb-6 mt-4 overflow-x-scroll overflow-y-scroll h-1/2">
-        <DataTable columns={questionColumns} data={data} globalFilter={query} setGlobalFilter={setQuery}/>
+        <DataTable columns={questionColumns} data={questionData} />
       </div>
     </section>
   )

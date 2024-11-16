@@ -1,8 +1,9 @@
 import { create } from 'zustand';
-import { Organization, StudentGroup, User } from '@/Types/types';
+import { Organization, Question, StudentGroup, TestBank, User } from '@/Types/types';
 import orgaizationData from '@/dummyData/organisationData.json'
 import studentData from '@/dummyData/studentData.json'
 import studentGroupData from '@/dummyData/studentGroupData.json'
+import testBankData from '@/dummyData/testBankData.json'
 
 type Usertore = {
   user: User ; // Initialize as null to indicate no user is signed in initially
@@ -179,3 +180,62 @@ export const useStudentGroupStore = create<SudentGroupType>((set)=>({
       ),
     })),
 }));
+
+type TestBankType = {
+  testBank: TestBank[];
+  addTestBank: (testBankData: TestBank) => void;
+  addQuestion: (testBankId: number|string, newQuestion: Question) => void;
+  removeQuestion: (testBankId: number|string, questionId: number|string) => void;
+  editQuestion: (testBankId: number|string,questionId: number|string, updatedQuestionData: Question) => void;
+}
+
+export const useTestBankStore = create<TestBankType>((set)=>({
+  testBank: testBankData,
+   // Add a new question bank
+   addTestBank: (testBankData) =>
+    set((state) => ({
+      testBank: [...state.testBank, testBankData],
+    })),
+
+  // Add a question to a specific question bank
+  addQuestion: (testBankId, newQuestion) =>
+    set((state) => ({
+      testBank: state.testBank.map((bank) =>
+        bank.testBank_id === testBankId
+          ? { ...bank, questions: [...bank.questions, newQuestion] }
+          : bank
+      ),
+    })),
+
+  // Remove a question from a specific question bank
+  removeQuestion: (testBankId, questionId) =>
+    set((state) => ({
+      testBank: state.testBank.map((bank) =>
+        bank.testBank_id === testBankId
+          ? {
+              ...bank,
+              questions: bank.questions.filter(
+                (question) => question.question_id !== questionId
+              ),
+            }
+          : bank
+      ),
+    })),
+
+  // Edit a question in a specific question bank
+  editQuestion: (testBankId, questionId, updatedQuestionData) =>
+    set((state) => ({
+      testBank: state.testBank.map((bank) =>
+        bank.testBank_id === testBankId
+          ? {
+              ...bank,
+              questions: bank.questions.map((question) =>
+                question.question_id === questionId
+                  ? { ...question, ...updatedQuestionData }
+                  : question
+              ),
+            }
+          : bank
+      ),
+    })),
+}))

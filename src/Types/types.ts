@@ -18,11 +18,20 @@ export interface StudentGrade {
     grade_time: Date;
 }
 
-export interface Questions {
+export interface Question {
     question_id: number | string;
     question_type: string;
     question_text: string;
-    multimedia_content: string;
+    difficulty: number;
+    created_by: string;
+    multimedia_content?: string;
+}
+
+export interface TestBank {
+    testBank_id: number | string;
+    name: string;
+    description: string;
+    questions: Question[];
 }
 export interface Exams {
     exam_id: number | string;

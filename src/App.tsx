@@ -57,7 +57,7 @@ import EmptyPage from './components/pages/Home/EmptyPage'
 import ExamInfo from './components/pages/ExamInfo'
 // const ExamInfo = lazy(()=> import('./components/pages/ExamInfo'))
 
-import TestBank from './components/pages/TestBank'
+
 // const TestBank = lazy(()=> import('./components/pages/TestBank'))
 
 import Organisation from './components/pages/organization/Organization'
@@ -73,6 +73,8 @@ import Students from './components/pages/students/Students'
 import Student from './components/pages/students/Student'
 import StudentGroups from './components/pages/studentGroup/StudentGroups'
 import StudentGroup from './components/pages/studentGroup/StudentGroup'
+import TestBanks from './components/pages/testBanks/TestBank'
+import TestBankPage from './components/pages/testBanks/TestBankPage'
 
 
 
@@ -84,7 +86,7 @@ const App = () => {
       <Routes>
         <Route path='/' element={<Home />}>
             {/* <Route index element={<EmptyPage />} />
-            <Route path='/admin/test-bank' element={<TestBank />} />
+           
             <Route path='teacher/exam-info' element={<ExamInfo />} />
             <Route path='/teacher/exam-info/create/' element={<CreateExam />}>
                   <Route index  path='basic' element={<FirstPage />} />
@@ -103,6 +105,12 @@ const App = () => {
 
              <Route path='admin/student/groups' element={<StudentGroups />} />
              <Route path='admin/student/groups/:id' element={<StudentGroup />} />
+
+             <Route path='/admin/test-banks' element={<TestBanks />} />
+             <Route path='/admin/test-banks/:id' element={<TestBankPage />} />
+
+
+             <Route path='/admin/questions' element={<Questions />} />
            {/* <Route path='student/grade' element={<Grade />} />
              <Route path='student/exam' element={<StudentExam />} />
             <Route path='teacher/validate-answers' element={<ValidateAnswers />} />

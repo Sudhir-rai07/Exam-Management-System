@@ -5,13 +5,13 @@ import {
     SelectItem,
     SelectTrigger,
     SelectValue,
-} from "../ui/select";
-import { Input } from "../ui/input";
-import { questionDifficulty } from "./utils";
-import { Button } from "../ui/button";
-import StarRating from "./StarRating";
+} from '@/components/ui/select';
+import { questionDifficulty } from "@/components/utils/utils";
+import { Input } from "@/components/ui/input";
+import StarRating from "@/components/utils/StarRating";
+import { Button } from "@/components/ui/button";
 
-const TestBankQueryForm = () => {
+const QuestionQueryForm = () => {
     const [id, setId] = useState("");
     const [updatedTime, setUpdatedTime] = useState("");
     const [stem, setStem] = useState("");
@@ -127,4 +127,4 @@ const TestBankQueryForm = () => {
     );
 };
 
-export default TestBankQueryForm;
+export default QuestionQueryForm;
