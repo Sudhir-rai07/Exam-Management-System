@@ -9,13 +9,10 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "./ui/dropdown-menu";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "./ui/select";
-import { useUser } from "@/zustand/store";
-
 import {useAuth0 } from '@auth0/auth0-react'
 
 const Navbar = () => {
-  const {user, updateRole} = useUser()
+  // const {user, updateRole} = useUser()
   const { user:oauthUser} = useAuth0()
 
   return (
