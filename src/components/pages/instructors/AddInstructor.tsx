@@ -37,6 +37,8 @@ const AddInstructor = ({ headerText }: { headerText: string }) => {
     console.log(organizations);
     toast.success("Instructor added");
     console.log({ id, name, email, password });
+    
+    handleRest()
   };
 
   const handleRest = () => {

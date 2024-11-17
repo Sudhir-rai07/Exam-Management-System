@@ -57,7 +57,8 @@ const AddQuestion = ({ headerText }: { headerText: string }) => {
     // Add logic to handle form submission
 
     console.log(difficulty, type);
-    toast.success("Org created");
+    toast.success("Question added");
+    
     setTimeout(() => {
       setStem("");
       handleRest();
@@ -66,6 +67,9 @@ const AddQuestion = ({ headerText }: { headerText: string }) => {
 
   const handleRest = () => {
     setAvatar(null);
+    setType("")
+    setStem("")
+    setDifficulty(0)
   };
 
   return (
@@ -207,25 +211,7 @@ const AddQuestion = ({ headerText }: { headerText: string }) => {
               />
               </>
               ))}
-              {/* <Label htmlFor="opt2" className="text-right">
-                B
-              </Label>{" "}
-              <Input
-                type="text"
-                placeholder="Please Enter"
-                id="opt2"
-                className="col-span-3"
-              />
-              <Label htmlFor="opt2" className="text-right">
-                C
-              </Label>{" "}
-              <Input
-                type="text"
-                placeholder="Please Enter"
-                id="opt2"
-                className="col-span-3"
-              /> */}
-            </div>
+              </div>
           )}
 
           <DialogFooter className="gap-4">

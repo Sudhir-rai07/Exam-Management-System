@@ -18,6 +18,7 @@ import { useOrganizationStore } from "@/zustand/store"
 const AddOrganisationDialog = ({headerText}: {headerText: string}) => {
     const [id, setId] = useState<number>(0);
     const [name, setName] = useState("");
+    const [email, setEmail] = useState("")
     const [password, setPassword] = useState("");
     const [description, setDescription] = useState("")
 
@@ -28,17 +29,19 @@ const AddOrganisationDialog = ({headerText}: {headerText: string}) => {
       e.preventDefault()
       // Add logic to handle form submission
 
-      addOrganization({name, description,org_id:id})
+      addOrganization({name, description,org_id:id,email,password})
       console.log(organizations)
       toast.success("Org created")
       console.log({id, name, description, password})
+      handleRest()
     }
 
     const handleRest = () => {
         setId(0)
         setName("")
-        setDescription("")
+        setEmail("")
         setPassword("")
+        setDescription("")
     }
   
     return (
@@ -54,6 +57,21 @@ const AddOrganisationDialog = ({headerText}: {headerText: string}) => {
             <DialogTitle className="text-xl">Add {headerText}</DialogTitle>
           </DialogHeader>
           <form className="grid gap-4 py-4" onSubmit={handleSubmit}>
+
+          <div className="grid items-center grid-cols-4 gap-4">
+              <Label htmlFor="id" className="text-right">
+                Id
+              </Label>
+              <Input
+              type="number"
+                id="id"
+                placeholder="Enter id"
+                className="col-span-3"
+                value={id}
+                onChange={(e) => setId(parseInt(e.target.value))}
+              />
+            </div>
+            
             <div className="grid items-center grid-cols-4 gap-4">
               <Label htmlFor="name" className="text-right">
                 Name
@@ -66,19 +84,20 @@ const AddOrganisationDialog = ({headerText}: {headerText: string}) => {
                 onChange={(e) => setName(e.target.value)}
               />
             </div>
+            
             <div className="grid items-center grid-cols-4 gap-4">
               <Label htmlFor="email" className="text-right">
-                Id
+                Email
               </Label>
               <Input
-              type="number"
-                id="id"
+                id="email"
                 placeholder="Enter email"
                 className="col-span-3"
-                value={id}
-                onChange={(e) => setId(parseInt(e.target.value))}
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
               />
             </div>
+           
   
             <div className="grid items-center w-full grid-cols-4 gap-4">
               <Label htmlFor="group" className="text-right">

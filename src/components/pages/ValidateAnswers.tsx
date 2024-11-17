@@ -12,9 +12,9 @@ const ValidateAnswers = () => {
         {Array.from({length: 5}).map((_, idx: number)=>{
             return (
                 <ValidateAnswersCard date='20/07/2004' difficulty={<StaticStarRating rating={3}/>}
-                exam_name='Maths'
-                group={4}
-                time='30'
+                exam_name='Midterm'
+                group={"4"}
+                time={30}
                 key={idx}
                 />
             )

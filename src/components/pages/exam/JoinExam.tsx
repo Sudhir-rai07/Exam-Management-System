@@ -79,6 +79,7 @@ const JoinExam: React.FC = () => {
   const handleSubmitExam = () => {
     console.log("Answers submitted:", answers);
     alert("Time's up! Exam submitted.");
+    window.location.href = "/student/exam"
   };
 
   const formatTime = (seconds: number) => {

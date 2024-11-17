@@ -1,12 +1,14 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { FaUser } from "react-icons/fa";
 import { IoMdEye, IoMdEyeOff } from "react-icons/io";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import Breadcrumbs from "../Breadcrumbs";
 import { Input } from "../ui/input";
+import LoginButton from "./LoginButton";
 
 const Login = () => {
+  
   const [username, setUsername] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [showPassword, setShowPassword] = useState(false);
@@ -18,9 +20,7 @@ const Login = () => {
 
   const handleSubmit = (e: React.ChangeEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (!username || !password) {
-      return toast.error("Both fields are required");
-    }
+    
     console.log(username, null, password);
     setUsername("");
     setPassword("");
@@ -38,7 +38,7 @@ const Login = () => {
           </div>
           <form
             onSubmit={handleSubmit}
-            className="h-[500px] lg:w-[700px] lg:shadow-[0px_0px_10px_4px_#cbd5e0] ml-4 rounded-md flex-col flex justify-center px-12"
+            className="h-[500px] lg:w-[700px]  ml-4 rounded-md flex-col flex justify-center px-12"
           >
             <p className="text-2xl font-semibold lg:text-3xl">
               Login to Exam Management System
@@ -116,6 +116,7 @@ const Login = () => {
                 Create
               </Link>
             </span>
+           <LoginButton />
           </form>
         </div>
       </section>

@@ -73,6 +73,9 @@ export interface Organization {
     org_id: number | string;
     name: string;
     description: string;
+    email: string,
+    password: string;
+    last_login?: string
     admins?: User[];
     instructors?: User[];
     students?: User[];

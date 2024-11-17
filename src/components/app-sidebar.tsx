@@ -19,7 +19,9 @@ import {
   Group,
   Info,
   LayoutGrid,
+  Settings,
   Sheet,
+  TableOfContents,
   User,
   User2,
   UsersIcon,
@@ -32,6 +34,8 @@ import {
   DropdownMenuTrigger,
 } from "./ui/dropdown-menu";
 import { useUser } from "@/zustand/store";
+import { IoMdSpeedometer } from "react-icons/io";
+import { IoGridOutline } from "react-icons/io5";
 
 type MenuItemType = {
   title: string;
@@ -42,111 +46,120 @@ type MenuItemType = {
 //  Exam --> Question ExamInfo
 const teacherMenuItems1: MenuItemType[] = [
   {
-    title: "Test Banks",
-    url: "/admin/test-banks",
+    title: "Questions",
+    url: "/teacher/questions",
     icon: <Book />,
   }, {
-    title: "Questions",
-    url: "/admin/questions",
+    title: "Exam info",
+    url: "teacher/exam-info",
     icon: <Book />,
   },
 ];
 const teacherMenuItems2: MenuItemType[] = [
   {
-    title: "Create Exam",
-    url: "teacher/exam-info/create/basic",
+    title: "Validate Exam",
+    url: "teacher/validate-answers",
     icon: <CopyCheck />,
   },
   {
-    title: "Validate Answers",
-    url: "/student/grade",
+    title: "Feedback",
+    url: "/teacher/feedback",
     icon: <Info />,
   },
 ];
 
 const studentMenuItems: MenuItemType[] = [
   {
+    title: "Profile",
+    url: "/profile",
+    icon: <LayoutGrid />,
+  },{
     title: "Exam",
     url: "/student/exam",
-    icon: <Info />,
+    icon: <LayoutGrid />,
   },
   {
     title: "Grade",
     url: "/student/grade",
-    icon: <GraduationCap />,
+    icon: <LayoutGrid />,
   },
 ];
 
 const systemAdminMenuItmes: MenuItemType[] = [
   {
-    title: "Organisation",
-    url: "/admin/organisation",
-    icon: <Building2 />,
-  },
-  {
-    title: "Admins",
-    url: "/admin/organisations",
-    icon: <User />,
-  },
-  {
     title: "Instructors",
-    url: "/admin/instructors",
+    url: "system-admin/user/instructors",
     icon: <User />,
+  },
+  {
+    title: "Students",
+    url: "system-admin/user/students",
+    icon: <User />,
+  },
+  {
+    title: "Organisation",
+    url: "system-admin/user/organisation",
+    icon: <Building2 />,
   },
 ];
 
 const organizationAdminMenuItmes: MenuItemType[] = [
   {
-    title: "Organisation",
-    url: "/admin/organisation",
-    icon: <Building2 />,
-  },
-  {
     title: "Instructors",
-    url: "/admin/instructors",
-    icon: <User />,
-  },
-  {
-    title: "Admins",
-    url: "/admin/organisations",
+    url: "/oragnization-admin/user/instructors",
     icon: <User />,
   },
   {
     title: "Students",
-    url: "/admin/students",
+    url: "/oragnization-admin/user/students",
     icon: <UsersIcon />,
   },
   {
-    title: "Student Groups",
-    url: "/admin/student/groups",
-    icon: <Group />,
+    title: "Organisation",
+    url: "/oragnization-admin/user/organisation",
+    icon: <Building2 />,
   },
-  {
-    title: "Test Banks",
-    url: "/admin/test-banks",
-    icon: <Book />,
-  },
-  {
-    title: "Questions",
-    url: "/admin/questions",
-    icon: <Book />,
-  },
+  // {
+  //   title: "Admins",
+  //   url: "/admin/organisations",
+  //   icon: <User />,
+  // },
+  // {
+  //   title: "Student Groups",
+  //   url: "/admin/student/groups",
+  //   icon: <Group />,
+  // },
+  // {
+  //   title: "Test Banks",
+  //   url: "/admin/test-banks",
+  //   icon: <Book />,
+  // },
+  // {
+  //   title: "Questions",
+  //   url: "/admin/questions",
+  //   icon: <Book />,
+  // },
 ];
 
 const organizationAdminMenuItmes2: MenuItemType[] = [
   {
-    title: "Exam",
-    url: "teacher/exam-info/create/",
+    title: "TestBank",
+    url: "oragnization-admin/user/test-bank",
     icon: <Info />,
   },
   {
-    title: "Exam-Info",
-    url: "teacher/exam-info/",
+    title: "Questions",
+    url: "oragnization-admin/user/questions/",
     icon: <Info />,
+  },
+  {
+    title: "Exam Info",
+    url: "oragnization-admin/exam-info",
+    icon: <GraduationCap />,
   },
   {
     title: "Grade",
-    url: "/student/grade",
+    url: "oragnization-admin/grade",
     icon: <GraduationCap />,
   },
 ]
@@ -157,10 +170,15 @@ const sidebarContent = (role: string) => {
     return (
       <>
         <SidebarContent>
+        <SidebarGroup />
+        <SidebarGroupLabel>
+        <IoMdSpeedometer size={50}/>
+        <Link to="/oragnization-admin" className="flex items-center gap-1 ml-2 text-lg">HomePage</Link>
+        </SidebarGroupLabel>
           <SidebarGroup />
           <SidebarGroupLabel>
             <LayoutGrid size={20} className="mr-2" />
-            <span className="text-lg">Organization</span>
+            <span className="text-lg">User</span>
           </SidebarGroupLabel>
           <SidebarGroupContent className="pl-4">
             <SidebarMenu>
@@ -170,7 +188,7 @@ const sidebarContent = (role: string) => {
                     {/* {item.title} */}
                     <SidebarMenuButton asChild>
                       <Link to={item.url}>
-                        {item.icon}
+                        {/* {item.icon} */}
                         <span>{item.title}</span>
                       </Link>
                     </SidebarMenuButton>
@@ -193,7 +211,7 @@ const sidebarContent = (role: string) => {
                     {/* {item.title} */}
                     <SidebarMenuButton asChild>
                       <Link to={item.url}>
-                        {item.icon}
+                        {/* {item.icon} */}
                         <span>{item.title}</span>
                       </Link>
                     </SidebarMenuButton>
@@ -202,6 +220,12 @@ const sidebarContent = (role: string) => {
               })}
             </SidebarMenu>
           </SidebarGroupContent>
+
+          <SidebarGroup />
+          <SidebarGroupLabel className="">
+            <LayoutGrid size={20} className="mr-2" />
+            <Link to={'/profile'} className="text-lg">Profile</Link>
+          </SidebarGroupLabel>
         </SidebarContent>
       </>
     );
@@ -210,10 +234,15 @@ const sidebarContent = (role: string) => {
       return (
     <>
     <SidebarContent>
+    <SidebarGroup />
+        <SidebarGroupLabel>
+        <IoMdSpeedometer size={50}/>
+        <Link to="/teacher" className="flex items-center gap-1 ml-2 text-lg">HomePage</Link>
+        </SidebarGroupLabel>
           <SidebarGroup />
           <SidebarGroupLabel>
-            <LayoutGrid size={20} className="mr-2" />
-            <span className="text-lg">Organization</span>
+            <TableOfContents size={24} className="mr-2 text-blue-500 rotate-180" />
+            <span className="text-lg">Exam</span>
           </SidebarGroupLabel>
           <SidebarGroupContent className="pl-4">
             <SidebarMenu>
@@ -223,7 +252,7 @@ const sidebarContent = (role: string) => {
                     {/* {item.title} */}
                     <SidebarMenuButton asChild>
                       <Link to={item.url}>
-                        {item.icon}
+                        {/* {item.icon} */}
                         <span>{item.title}</span>
                       </Link>
                     </SidebarMenuButton>
@@ -235,10 +264,10 @@ const sidebarContent = (role: string) => {
 
           <SidebarGroup />
           <SidebarGroupLabel>
-            <Sheet size={20} className="mr-2" />
-            <span className="text-lg">Exam</span>
+            <Settings size={20} className="mr-2" />
+            <span className="text-lg">PostExam</span>
           </SidebarGroupLabel>
-          <SidebarGroupContent className="pl-4">
+          <SidebarGroupContent className="pl-6">
             <SidebarMenu>
               {teacherMenuItems2.map((item) => {
                 return (
@@ -246,7 +275,7 @@ const sidebarContent = (role: string) => {
                     {/* {item.title} */}
                     <SidebarMenuButton asChild>
                       <Link to={item.url}>
-                        {item.icon}
+                        {/* {item.icon} */}
                         <span>{item.title}</span>
                       </Link>
                     </SidebarMenuButton>
@@ -255,6 +284,12 @@ const sidebarContent = (role: string) => {
               })}
             </SidebarMenu>
           </SidebarGroupContent>
+          
+          <SidebarGroup />
+          <SidebarGroupLabel className="">
+            <LayoutGrid size={20} className="mr-2" />
+            <Link to={'/profile'} className="text-lg">Profile</Link>
+          </SidebarGroupLabel>
         </SidebarContent>
     </>)
 
@@ -263,19 +298,29 @@ const sidebarContent = (role: string) => {
       <>
         <SidebarContent>
           <SidebarGroup />
-          {studentMenuItems.map((value) => {
+          <SidebarContent>
+            <SidebarMenu>
+            {studentMenuItems.map((value) => {
             return (
-              <SidebarGroupLabel key={value.url} className="space-x-3">
-                <Grid2X2 />
+              <SidebarMenuItem key={value.url} className="flex items-center ml-4 space-x-2">
+                <IoGridOutline  size={14}/>
                 <Link
                   to={value.url}
                   className="flex items-center gap-1 text-lg"
                 >
                   {value.title}
                 </Link>
-              </SidebarGroupLabel>
+              </SidebarMenuItem>
             );
           })}
+            </SidebarMenu>
+          </SidebarContent>
+
+          <SidebarGroup />
+          <SidebarGroupLabel className="">
+            <LayoutGrid size={20} className="mr-2" />
+            <Link to={'/profile'} className="text-lg">Profile</Link>
+          </SidebarGroupLabel>
         </SidebarContent>
       </>
     );
@@ -285,6 +330,12 @@ const sidebarContent = (role: string) => {
     return (
       <>
         <SidebarContent>
+        <SidebarGroup />
+        <SidebarGroupLabel>
+        <IoMdSpeedometer size={50}/>
+        <Link to="/systemadmin" className="flex items-center gap-1 ml-2 text-lg">HomePage</Link>
+        </SidebarGroupLabel>
+
           <SidebarGroup />
           <SidebarGroupLabel>
             <LayoutGrid size={20} className="mr-2" />
@@ -298,7 +349,6 @@ const sidebarContent = (role: string) => {
                     {/* {item.title} */}
                     <SidebarMenuButton asChild>
                       <Link to={item.url}>
-                        {item.icon}
                         <span>{item.title}</span>
                       </Link>
                     </SidebarMenuButton>
@@ -309,6 +359,10 @@ const sidebarContent = (role: string) => {
           </SidebarGroupContent>
 
           <SidebarGroup />
+          <SidebarGroupLabel className="">
+            <LayoutGrid size={20} className="mr-2" />
+            <Link to={'/profile'} className="text-xl">Profile</Link>
+          </SidebarGroupLabel>
           </SidebarContent>
       </>
     );

@@ -3,6 +3,344 @@
     "org_id": 1,
     "name": "Org1",
     "description": "The first organization",
+    "email": "org1@example.com",
+    "password": "password1",
+    "last_login": "2022-01-01 00:00:00",
+    "admins": [
+      {
+        "user_id": 11,
+        "username": "user_11",
+        "email": "user_11@example.com",
+        "password": "gibrishhh",
+        "role": "organisationAdmin",
+        "created_at": "2022-01-01T00:00:00.000"
+      },{
+        "user_id": 101,
+        "username": "user_101",
+        "email": "user_101@example.com",
+        "password": "gibrishhh",
+        "role": "organisationAdmin",
+        "created_at": "2022-01-01T00:00:00.000"
+      }
+    ],
+    "instructors": [
+      {
+        "user_id": 111,
+        "username": "user_111",
+        "email": "user_111@example.com",
+        "password": "gibrishhh",
+        "role": "instructor",
+        "created_at": "2022-01-01T00:00:00.000"
+      },{
+        "user_id": 112,
+        "username": "user_112",
+        "email": "user_112@example.com",
+        "password": "gibrishhh",
+        "role": "instructor",
+        "created_at": "2022-01-01T00:00:00.000"
+      }
+    ],
+    "students":[
+      {
+        "user_id": 13,
+        "username": "user_13",
+        "email": "user_13@example.com",
+        "password": "gibrishhh",
+        "role": "student",
+        "created_at": "2022-01-01T00:00:00.000"
+      },
+      {
+        "user_id": 14,
+        "username": "user_14",
+        "email": "user_14@example.com",
+        "password": "gibrishhh",
+        "role": "student",
+        "created_at": "2022-01-01T00:00:00.000"
+        },
+        {
+          "user_id": 15,
+          "username": "user_15",
+          "email": "user_15@example.com",
+          "password": "gibrishhh",
+          "role": "student",
+          "created_at": "2022-01-01T00:00:00.000"
+        }
+    ]
+  }, {
+    "org_id": 1,
+    "name": "Org1",
+    "description": "The first organization",
+    "email": "org1@example.com",
+    "password": "password1",
+    "last_login": "2022-01-01 00:00:00",
+    "admins": [
+      {
+        "user_id": 11,
+        "username": "user_11",
+        "email": "user_11@example.com",
+        "password": "gibrishhh",
+        "role": "organisationAdmin",
+        "created_at": "2022-01-01T00:00:00.000"
+      },{
+        "user_id": 101,
+        "username": "user_101",
+        "email": "user_101@example.com",
+        "password": "gibrishhh",
+        "role": "organisationAdmin",
+        "created_at": "2022-01-01T00:00:00.000"
+      }
+    ],
+    "instructors": [
+      {
+        "user_id": 111,
+        "username": "user_111",
+        "email": "user_111@example.com",
+        "password": "gibrishhh",
+        "role": "instructor",
+        "created_at": "2022-01-01T00:00:00.000"
+      },{
+        "user_id": 112,
+        "username": "user_112",
+        "email": "user_112@example.com",
+        "password": "gibrishhh",
+        "role": "instructor",
+        "created_at": "2022-01-01T00:00:00.000"
+      }
+    ],
+    "students":[
+      {
+        "user_id": 13,
+        "username": "user_13",
+        "email": "user_13@example.com",
+        "password": "gibrishhh",
+        "role": "student",
+        "created_at": "2022-01-01T00:00:00.000"
+      },
+      {
+        "user_id": 14,
+        "username": "user_14",
+        "email": "user_14@example.com",
+        "password": "gibrishhh",
+        "role": "student",
+        "created_at": "2022-01-01T00:00:00.000"
+        },
+        {
+          "user_id": 15,
+          "username": "user_15",
+          "email": "user_15@example.com",
+          "password": "gibrishhh",
+          "role": "student",
+          "created_at": "2022-01-01T00:00:00.000"
+        }
+    ]
+  }, {
+    "org_id": 12,
+    "name": "Org1",
+    "description": "The first organization",
+    "email": "org1@example.com",
+    "password": "password1",
+    "last_login": "2022-01-01 00:00:00",
+    "admins": [
+      {
+        "user_id": 11,
+        "username": "user_11",
+        "email": "user_11@example.com",
+        "password": "gibrishhh",
+        "role": "organisationAdmin",
+        "created_at": "2022-01-01T00:00:00.000"
+      },{
+        "user_id": 101,
+        "username": "user_101",
+        "email": "user_101@example.com",
+        "password": "gibrishhh",
+        "role": "organisationAdmin",
+        "created_at": "2022-01-01T00:00:00.000"
+      }
+    ],
+    "instructors": [
+      {
+        "user_id": 111,
+        "username": "user_111",
+        "email": "user_111@example.com",
+        "password": "gibrishhh",
+        "role": "instructor",
+        "created_at": "2022-01-01T00:00:00.000"
+      },{
+        "user_id": 112,
+        "username": "user_112",
+        "email": "user_112@example.com",
+        "password": "gibrishhh",
+        "role": "instructor",
+        "created_at": "2022-01-01T00:00:00.000"
+      }
+    ],
+    "students":[
+      {
+        "user_id": 13,
+        "username": "user_13",
+        "email": "user_13@example.com",
+        "password": "gibrishhh",
+        "role": "student",
+        "created_at": "2022-01-01T00:00:00.000"
+      },
+      {
+        "user_id": 14,
+        "username": "user_14",
+        "email": "user_14@example.com",
+        "password": "gibrishhh",
+        "role": "student",
+        "created_at": "2022-01-01T00:00:00.000"
+        },
+        {
+          "user_id": 15,
+          "username": "user_15",
+          "email": "user_15@example.com",
+          "password": "gibrishhh",
+          "role": "student",
+          "created_at": "2022-01-01T00:00:00.000"
+        }
+    ]
+  }, {
+    "org_id": 111,
+    "name": "Org1",
+    "description": "The first organization",
+    "email": "org1@example.com",
+    "password": "password1",
+    "last_login": "2022-01-01 00:00:00",
+    "admins": [
+      {
+        "user_id": 11,
+        "username": "user_11",
+        "email": "user_11@example.com",
+        "password": "gibrishhh",
+        "role": "organisationAdmin",
+        "created_at": "2022-01-01T00:00:00.000"
+      },{
+        "user_id": 101,
+        "username": "user_101",
+        "email": "user_101@example.com",
+        "password": "gibrishhh",
+        "role": "organisationAdmin",
+        "created_at": "2022-01-01T00:00:00.000"
+      }
+    ],
+    "instructors": [
+      {
+        "user_id": 111,
+        "username": "user_111",
+        "email": "user_111@example.com",
+        "password": "gibrishhh",
+        "role": "instructor",
+        "created_at": "2022-01-01T00:00:00.000"
+      },{
+        "user_id": 112,
+        "username": "user_112",
+        "email": "user_112@example.com",
+        "password": "gibrishhh",
+        "role": "instructor",
+        "created_at": "2022-01-01T00:00:00.000"
+      }
+    ],
+    "students":[
+      {
+        "user_id": 13,
+        "username": "user_13",
+        "email": "user_13@example.com",
+        "password": "gibrishhh",
+        "role": "student",
+        "created_at": "2022-01-01T00:00:00.000"
+      },
+      {
+        "user_id": 14,
+        "username": "user_14",
+        "email": "user_14@example.com",
+        "password": "gibrishhh",
+        "role": "student",
+        "created_at": "2022-01-01T00:00:00.000"
+        },
+        {
+          "user_id": 15,
+          "username": "user_15",
+          "email": "user_15@example.com",
+          "password": "gibrishhh",
+          "role": "student",
+          "created_at": "2022-01-01T00:00:00.000"
+        }
+    ]
+  }, {
+    "org_id": 10,
+    "name": "Org1",
+    "description": "The first organization",
+    "email": "org1@example.com",
+    "password": "password1",
+    "last_login": "2022-01-01 00:00:00",
+    "admins": [
+      {
+        "user_id": 11,
+        "username": "user_11",
+        "email": "user_11@example.com",
+        "password": "gibrishhh",
+        "role": "organisationAdmin",
+        "created_at": "2022-01-01T00:00:00.000"
+      },{
+        "user_id": 101,
+        "username": "user_101",
+        "email": "user_101@example.com",
+        "password": "gibrishhh",
+        "role": "organisationAdmin",
+        "created_at": "2022-01-01T00:00:00.000"
+      }
+    ],
+    "instructors": [
+      {
+        "user_id": 111,
+        "username": "user_111",
+        "email": "user_111@example.com",
+        "password": "gibrishhh",
+        "role": "instructor",
+        "created_at": "2022-01-01T00:00:00.000"
+      },{
+        "user_id": 112,
+        "username": "user_112",
+        "email": "user_112@example.com",
+        "password": "gibrishhh",
+        "role": "instructor",
+        "created_at": "2022-01-01T00:00:00.000"
+      }
+    ],
+    "students":[
+      {
+        "user_id": 13,
+        "username": "user_13",
+        "email": "user_13@example.com",
+        "password": "gibrishhh",
+        "role": "student",
+        "created_at": "2022-01-01T00:00:00.000"
+      },
+      {
+        "user_id": 14,
+        "username": "user_14",
+        "email": "user_14@example.com",
+        "password": "gibrishhh",
+        "role": "student",
+        "created_at": "2022-01-01T00:00:00.000"
+        },
+        {
+          "user_id": 15,
+          "username": "user_15",
+          "email": "user_15@example.com",
+          "password": "gibrishhh",
+          "role": "student",
+          "created_at": "2022-01-01T00:00:00.000"
+        }
+    ]
+  }, {
+    "org_id": 11,
+    "name": "Org1",
+    "description": "The first organization",
+    "email": "org1@example.com",
+    "password": "password1",
+    "last_login": "2022-01-01 00:00:00",
     "admins": [
       {
         "user_id": 11,

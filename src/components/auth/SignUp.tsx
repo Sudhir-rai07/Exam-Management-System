@@ -15,8 +15,11 @@ import {
 } from "../ui/select";
 import { Button } from "../ui/button";
 import { useUser } from "@/zustand/store";
+import { useAuth0 } from "@auth0/auth0-react";
 
 const SignUp = () => {
+  
+  const { loginWithRedirect} = useAuth0()
   const [username, setUsername] = useState<string>("");
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
@@ -35,7 +38,7 @@ const SignUp = () => {
       return toast.error("All fields are required");
     }
     // Your API request here
-    signUp({username, email, password, role, created_at: Date.now()})
+    // signUp({username, email, password, role, created_at: Date.now()})
     // user
     console.log(user)
     // Toast notification
@@ -135,7 +138,7 @@ const SignUp = () => {
             </div>
             <Button
               type="submit"
-              className="bg-blue-600 text-white w-[350px] mt-4 py-1"
+              className="bg-blue-600 hover:bg-blue-600 text-white w-[350px] mt-4 py-1"
             >
               SignUp
             </Button>
@@ -145,6 +148,8 @@ const SignUp = () => {
                 Login
               </Link>
             </span>
+            <p className="text-center mt-2 text-gray-500 font-semibold max-w-[350px]">Or</p>
+            <Button variant={"outline"} className=" w-[350px] mt-2" onClick={()=> loginWithRedirect()}>Continue with Google</Button>
           </form>
         </div>
       </section>

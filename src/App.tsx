@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import { lazy, Suspense } from "react";
 import { ThemeProvider } from "./components/theme-provider";
 
@@ -57,10 +57,7 @@ import Organisation from "./components/pages/organization/Organization";
 // const Organisation = lazy(()=> import('./components/pages/Organisation'))
 
 import Grade from "./components/Grade";
-import Organizations from "./components/pages/organization/Organizations";
 import OrganizationList from "./components/pages/organization/Organization";
-import Org from "./components/pages/organization/Org";
-import OrganizationStatics from "./components/pages/organization/OrganizationStatics";
 import Instructors from "./components/pages/instructors/Instructors";
 import Students from "./components/pages/students/Students";
 import Student from "./components/pages/students/Student";
@@ -71,59 +68,106 @@ import TestBankPage from "./components/pages/testBanks/TestBankPage";
 import ExamPage from "./components/pages/exam/ExamPage";
 import JoinExam from "./components/pages/exam/JoinExam";
 import StudentGradeReview from "./components/pages/exam/StudentGradeReview";
+import Feedback from "./components/pages/instructors/Feedback";
+import NotFound from "./components/pages/pageNotFound/PageNotFound";
+import Notification from "./components/pages/notification/Notification";
+import Settings from "./components/pages/settings/Setting";
+
+import {useAuth0} from '@auth0/auth0-react'
 
 const App = () => {
+  const {isAuthenticated} = useAuth0()
   return (
     <Suspense fallback={<h1>Loading....</h1>}>
       <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
         <Routes>
-          <Route path="/" element={<Home />}>
+          <Route path="/" element={isAuthenticated? <Home /> : <Login />}>
             <Route index element={<EmptyPage />} />
 
+            {/* Teacher */}
+            <Route path="teacher" element={<EmptyPage />} />
+            <Route path="teacher/questions" element={<Questions />} />
             <Route path="teacher/exam-info" element={<ExamInfo />} />
-            <Route path="teacher/exam-info/exam/:id" element={<ExamPage />} />
-
             <Route path="/teacher/exam-info/create/" element={<CreateExam />}>
               <Route index path="basic" element={<FirstPage />} />
               <Route path={"select-question"} element={<SecondPage />} />
               <Route path={"preview"} element={<ThirdPage />} />
               <Route path={"success"} element={<PageFour />} />
             </Route>
-            
-            <Route path="admin/organisation" element={<OrganizationList />} />
-            <Route path="admin/organisations" element={<Organizations />} />
-            <Route path="admin/organisation/:id" element={<Org />} />
-            <Route
-              path="admin/organisation/:id/statistics"
-              element={<OrganizationStatics />}
-            />
-            <Route path="admin/instructors" element={<Instructors />} />
-
-            <Route path="admin/students" element={<Students />} />
-            <Route path="admin/student/:id" element={<Student />} />
-
-            <Route path="admin/student/groups" element={<StudentGroups />} />
-            <Route path="admin/student/groups/:id" element={<StudentGroup />} />
-
-            <Route path="/admin/test-banks" element={<TestBanks />} />
-            <Route path="/admin/test-banks/:id" element={<TestBankPage />} />
-
-            <Route path="/admin/questions" element={<Questions />} />
-
-            <Route path="student/grade" element={<Grade />} />
-            <Route path="student/grade/review" element={<StudentGradeReview />} />
-            <Route path="student/exam" element={<StudentExam />} />
-            <Route path="student/exam/join" element={<JoinExam />} />
-
-            
             <Route
               path="teacher/validate-answers"
               element={<ValidateAnswers />}
             />
-            <Route path="teacher/questions" element={<Questions />} />
+            <Route path="teacher/feedback" element={<Feedback />} />
+
+            <Route path="/teacher/test-banks" element={<TestBanks />} />
+            <Route path="/admin/test-banks/:id" element={<TestBankPage />} />
+            <Route path="teacher/exam-info/exam/:id" element={<ExamPage />} />
+
+            {/* SYSTEM ADMIN */}
+            <Route path="systemadmin" element={<EmptyPage />} />
+            <Route
+              path="system-admin/user/instructors"
+              element={<Instructors />}
+            />
+            <Route path="system-admin/user/students" element={<Students />} />
+            <Route
+              path="system-admin/user/organisation"
+              element={<OrganizationList />}
+            />
+            {/* <Route path="system-admin/user/organisation" element={<Organizations />} /> */}
+            {/* <Route path="admin/organisation/:id" element={<Org />} /> */}
+            {/* <Route
+              path="admin/organisation/:id/statistics"
+              element={<OrganizationStatics />}
+            /> */}
+            <Route
+              path="organization-admin/student/:id"
+              element={<Student />}
+            />
+            <Route path="admin/student/groups" element={<StudentGroups />} />
+            <Route path="admin/student/groups/:id" element={<StudentGroup />} />
+
+            {/* ORGANIZATION ADMIN */}
+            <Route
+              path="oragnization-admin"
+              element={<EmptyPage />}
+            /><Route
+              path="oragnization-admin/user/instructors"
+              element={<Instructors />}
+            />
+            <Route
+              path="oragnization-admin/user/students"
+              element={<Students />}
+            />
+            <Route
+              path="oragnization-admin/user/organisation"
+              element={<OrganizationList />}
+            />
+            <Route path="/oragnization-admin/user/questions" element={<TestBankPage />} />
+            <Route path="oragnization-admin/exam-info/" element={<ExamInfo />} />
+            <Route
+              path="oragnization-admin/questions"
+              element={<Questions />}
+            />
+            <Route path="oragnization-admin/grade" element={<Grade />} />
+
+            {/* Student */}
+            <Route path="student/" element={<EmptyPage />} />
+            <Route path="student/exam" element={<StudentExam />} />
+            <Route path="student/grade" element={<Grade />} />
+            <Route path="student/gradeinner" element={<StudentGradeReview />} />
+            <Route path="student/exam/join" element={<JoinExam />} />
+
+
+            <Route path="notification" element={<Notification />} />
+            <Route path="settings" element={<Settings />} />
+              
+            {/* Page not found */}
+            <Route path="*" element={<NotFound />} />
           </Route>
 
-          {/*  */}
+          {/* AUTH ROUTES */}
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/reset-password" element={<ResetPassword />} />

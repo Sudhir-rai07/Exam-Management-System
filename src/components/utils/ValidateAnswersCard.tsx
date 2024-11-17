@@ -1,7 +1,14 @@
-import { ValidateAnswerCardType } from "@/Types/types";
+
 import { Button } from "../ui/button";
 import { CopyCheck, Eye } from "lucide-react";
-
+import { Link } from "react-router-dom";
+type ValidateAnswerCardType = {
+  exam_name: string;
+  group: string;
+  time: number;
+  date: string;
+  difficulty: React.ReactElement;
+}
 const ValidateAnswersCard: React.FC<ValidateAnswerCardType> = ({
   date,
   difficulty,
@@ -28,7 +35,11 @@ const ValidateAnswersCard: React.FC<ValidateAnswerCardType> = ({
         <span>Group</span> <span>{group}</span>
       </p>
       <div className="flex items-center gap-4 ml-auto">
-        <Button className="bg-blue-600 hover:bg-blue-700">{<Eye />}View</Button>
+        <Button className="bg-blue-600 hover:bg-blue-700">
+          <Link to={'/teacher/exam-info/exam/1'} className="flex gap-2 ice">
+            {<Eye />}View
+          </Link>
+        </Button>
       </div>
     </div>
   );

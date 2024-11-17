@@ -46,6 +46,15 @@ export const organisationColumns: ColumnDef<Organization>[] = [
   {
     accessorKey: "name",
     header: "Name",
+  },{
+    accessorKey: "email",
+    header: "Email",
+  },{
+    accessorKey: "password",
+    header: "Password",
+  },{
+    accessorKey: "last_login",
+    header: "Last login",
   },
   organisationColumnHelper.display({
     id: "actions",

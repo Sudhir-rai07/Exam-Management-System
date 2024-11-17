@@ -9,14 +9,14 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "./ui/dropdown-menu";
-import { Input } from "./ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "./ui/select";
-import { useState } from "react";
 import { useUser } from "@/zustand/store";
 
+import {useAuth0 } from '@auth0/auth0-react'
 
 const Navbar = () => {
   const {user, updateRole} = useUser()
+  const { user:oauthUser} = useAuth0()
 
   return (
     <header className="sticky top-0 light:bg-gray-100">
@@ -42,11 +42,11 @@ const Navbar = () => {
 
         {/* nav items */}
         <div className="items-center hidden gap-4 md:flex">
-          <div className="flex items-center h-10 gap-1 px-5 py-1 rounded-full">
-            <Input
+          <div className="flex items-center h-10 gap-1 px-5 py-1 border-2 rounded-full">
+            <input
               type="text"
-              placeholder="Search"
-              className="bg-transparent focus:outline-none"
+              placeholder="Search Context"
+              className="bg-transparent border-none focus:border-none focus:outline-none focus-visible:ring-0"
             />
             <Search size={16} cursor={"pointer"} /> {/* Add states*/}
           </div>
@@ -77,13 +77,13 @@ const Navbar = () => {
             <Settings size={18} />
           </Link>
 
-          <Link to={"/profile"} className="overflow-hidden nav-item">
+          {oauthUser && <Link to={"/profile"} className="overflow-hidden nav-item">
             <img
-              src="https://placecats.com/bella/300/300"
+              src={oauthUser.picture}
               alt=""
               className="bg-cover"
             />
-          </Link>
+          </Link>}
         </div>
 
         {/* nav item in small devices */}

@@ -39,13 +39,13 @@ const Org = () => {
       <h1>ORG DETAILS</h1>
 
       <div className="mt-8">
-        <p className="font-semibold text-black">
+        <p className="font-semibold">
           <span className="text-gray-400">OrgId:</span> {org1.org_id}
         </p>
-        <p className="font-semibold text-black">
+        <p className="font-semibold">
           <span className="text-gray-400">OrgName:</span> {org1.name}
         </p>
-        <p className="font-semibold text-black">
+        <p className="font-semibold">
           <span className="text-gray-400">OrgDescription:</span>{" "}
           {org1.description}
         </p>

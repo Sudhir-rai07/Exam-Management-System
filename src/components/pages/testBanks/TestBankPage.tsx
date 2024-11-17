@@ -12,12 +12,6 @@ const TestBankPage = () => {
 
   return (
     <div className="w-full h-full">
-      <h1 className="text-xl font-semibold">
-        Test bank : <span className="font-bold">{testbank1.name}</span>
-      </h1>
-      <p className="text-sm text-gray-500 max-w-[80%]">
-        {testbank1.description}
-      </p>
       <hr className="h-[2px] my-2 bg-gray-300 dark:bg-gray-700" />
 
         <TestBankQueryForm /> 
