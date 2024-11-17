@@ -26,7 +26,7 @@ const Navbar = () => {
         </Link>
 
         {/* Select user Role */}
-        <div className="max-w-[300px]">
+        {/* <div className="max-w-[300px]">
         <Select onValueChange={(value) => updateRole(user.user_id,value)}>
             <SelectTrigger>
               <SelectValue placeholder={user.role.toUpperCase()} />
@@ -38,7 +38,7 @@ const Navbar = () => {
               <SelectItem value="student">STUDENT</SelectItem>
             </SelectContent>
         </Select>
-        </div>
+        </div> */}
 
         {/* nav items */}
         <div className="items-center hidden gap-4 md:flex">
