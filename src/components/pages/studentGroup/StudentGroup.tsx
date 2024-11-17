@@ -13,6 +13,7 @@ import { Label } from "@/components/ui/label";
 import { User } from "@/Types/types";
 import { useStudentGroupStore } from "@/zustand/store";
 import { useState } from "react";
+import toast from "react-hot-toast";
 
 const StudentGroup = () => {
   const { groups } = useStudentGroupStore();
@@ -39,6 +40,8 @@ const StudentGroup = () => {
             const handleEditStudent = (e: React.FormEvent<HTMLFormElement>) => {
               e.preventDefault();
               // API call to update student
+              console.log("update student");
+              toast.success("Updated student details")
             };
 
             return (
@@ -69,7 +72,7 @@ const StudentGroup = () => {
                     </DialogTrigger>
                     <DialogContent className="sm:max-w-[425px]">
                       <DialogHeader>
-                        <DialogTitle>Edit Admin</DialogTitle>
+                        <DialogTitle>Edit Student</DialogTitle>
                         <DialogDescription>
                           Make changes here. Click save when you're done.
                         </DialogDescription>

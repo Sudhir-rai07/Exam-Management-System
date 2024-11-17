@@ -24,6 +24,11 @@ const Org = () => {
   const { editAdmin, removeAdmin } = useOrganizationAdminStore();
   const org1 = organizations[0];
 
+
+  const [username, setUsername] = useState("")
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
+
   const handleRemoveAdmin = (id: number | string): void => {
     removeAdmin(id);
     toast.success("Admin removed");
@@ -61,22 +66,39 @@ const Org = () => {
               </DialogHeader>
               <div className="grid gap-4 py-4">
                 <div className="grid items-center grid-cols-4 gap-4">
-                  <Label htmlFor="name" className="text-right">
-                    Name
+                  <Label htmlFor="username" className="text-right">
+                    username
                   </Label>
                   <Input
-                    id="name"
-                    defaultValue="Pedro Duarte"
+                    id="username"
+                    type="username"
+                    value={username}
+                    onChange={(e)=> setUsername(e.target.value)}
                     className="col-span-3"
                   />
                 </div>
                 <div className="grid items-center grid-cols-4 gap-4">
-                  <Label htmlFor="username" className="text-right">
-                    Username
+                  <Label htmlFor="email" className="text-right">
+                    Email
                   </Label>
                   <Input
                     id="username"
-                    defaultValue="@peduarte"
+                    type="email"
+                    value={email}
+                    onChange={(e)=> setEmail(e.target.value)}
+                    className="col-span-3"
+                  />
+                </div>
+
+                <div className="grid items-center grid-cols-4 gap-4">
+                  <Label htmlFor="password" className="text-right">
+                    Password
+                  </Label>
+                  <Input
+                    id="password"
+                    type="text"
+                    value={password}
+                    onChange={(e)=> setPassword(e.target.value)}
                     className="col-span-3"
                   />
                 </div>
@@ -109,7 +131,6 @@ const Org = () => {
           };
 
           return (
-            <>
               <div key={admin.user_id} className="flex items-center justify-between w-full gap-3 mt-4 md:w-1/2">
                 <p className="mr-8 text-lg font-semibold">{admin.username}</p>
 
@@ -167,7 +188,6 @@ const Org = () => {
                   </DialogContent>
                 </Dialog>
               </div>
-            </>
           );
         })}
     </div>

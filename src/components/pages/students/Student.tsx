@@ -20,6 +20,11 @@ const Student = () => {
   const [username, setUsername] = useState(student1.username);
   const [email, setemail] = useState(student1.email);
 
+  const handleRemoveStudent = () =>{
+    // removeStudent(student1.user_id);
+    toast.success('Student removed successfully');
+  }
+
   const handleEditProfile = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
@@ -51,7 +56,7 @@ const Student = () => {
           <Button
             variant={"destructive"}
             className="hover:bg-red-500"
-            onClick={() => removeStudent(student1.user_id)}
+            onClick={handleRemoveStudent}
           >
             Remove
           </Button>
@@ -63,7 +68,7 @@ const Student = () => {
               <DialogHeader>
                 <DialogTitle>Edit profile</DialogTitle>
                 <DialogDescription>
-                  Make changes profile here. Click save when you're done.
+                  Make changes here. Click save when you're done.
                 </DialogDescription>
               </DialogHeader>
               <form onSubmit={handleEditProfile} className="grid gap-4 py-4">
@@ -80,11 +85,11 @@ const Student = () => {
                   />
                 </div>
                 <div className="grid items-center grid-cols-4 gap-4">
-                  <Label htmlFor="username" className="text-right">
-                    Username
+                  <Label htmlFor="email" className="text-right">
+                    Email
                   </Label>
                   <Input
-                    id="username"
+                    id="email"
                     value={email}
                     onChange={(e) => setemail(e.target.value)}
                     className="col-span-3"

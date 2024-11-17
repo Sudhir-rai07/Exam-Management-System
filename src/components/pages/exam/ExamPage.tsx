@@ -19,7 +19,7 @@ const ExamPage = () => {
                 {exam1.questions.map((question: Question, idx:number)=> {
 
                     return (
-                        <div key={idx} className='mt-2 mb-4'>
+                        <div key={idx} className='px-2 px-4 py-4 mt-2 mb-4 bg-white rounded-md shadow-md'>
                             <p>Que {idx+1}: <br /> <span className="text-lg font-semibold">{question.question_text}</span></p>
                         </div>
                     )

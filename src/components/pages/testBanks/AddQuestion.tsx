@@ -76,7 +76,7 @@ const AddQuestion = ({ headerText }: { headerText: string }) => {
           New
         </Button>
       </DialogTrigger>
-      <DialogContent className="">
+      <DialogContent className=""aria-describedby="Add questions to testbank">
         <DialogHeader>
           <DialogTitle className="text-xl">Add {headerText}</DialogTitle>
         </DialogHeader>
@@ -196,7 +196,7 @@ const AddQuestion = ({ headerText }: { headerText: string }) => {
             </div>
               {Array.from({length: options}).map((option, idx)=>(
                 <>
-                <Label htmlFor="opt1" className="text-right">
+                <Label key={idx} htmlFor="opt1" className="text-right">
                 {String.fromCharCode('A'.charCodeAt(0) + idx)}
               </Label>{" "}
               <Input

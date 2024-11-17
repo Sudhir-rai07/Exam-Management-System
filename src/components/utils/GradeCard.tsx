@@ -20,7 +20,7 @@ const GradeCard: React.FC<GradeCardType> = ({ date, grade, name, time }) => {
 
       <div className="flex items-center justify-between">
       <p className="font-semibold">Grade : {grade}</p>
-      <Button className="flex items-center px-4 py-1 text-white bg-blue-500 rounded-none hover:text-white">
+      <Button className="flex items-center px-4 py-1 text-white bg-blue-500 rounded-md hover:bg-blue-600 hover:text-white">
         <Link to={'review'} className="flex items-center gap-2"><Eye /> Review</Link>
       </Button>
       </div>
