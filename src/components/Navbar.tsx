@@ -12,10 +12,11 @@ import {
 import { Input } from "./ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "./ui/select";
 import { useState } from "react";
+import { useUser } from "@/zustand/store";
 
 
 const Navbar = () => {
-  const [role,setUserRole] = useState("")  
+  const {user, updateRole} = useUser()
 
   return (
     <header className="sticky top-0 light:bg-gray-100">
@@ -26,9 +27,9 @@ const Navbar = () => {
 
         {/* Select user Role */}
         <div className="max-w-[300px]">
-        <Select onValueChange={(value) => setUserRole(value)}>
+        <Select onValueChange={(value) => updateRole(user.user_id,value)}>
             <SelectTrigger>
-              <SelectValue placeholder={role.toUpperCase()} />
+              <SelectValue placeholder={user.role.toUpperCase()} />
             </SelectTrigger>
             <SelectContent>
               <SelectItem value="organizationAdmin">ORG ADMIN</SelectItem>

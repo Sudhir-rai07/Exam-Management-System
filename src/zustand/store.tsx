@@ -9,6 +9,7 @@ type Usertore = {
   user: User ; // Initialize as null to indicate no user is signed in initially
   signUp: (user: User) => void;
   updateProfile: (userId: number | string, updatedUser: User) => void;
+  updateRole: (userId: number | string, role: string) => void;
 };
 
 type OrganizationStore = {
@@ -38,6 +39,10 @@ export const useUser = create<Usertore>((set) => ({
       }
       return state; 
     }),
+
+    updateRole: (userId: number | string, role: string) => set((state)=> ({
+      user: { ...state.user, role }
+    }))
 }));
 
 

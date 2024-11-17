@@ -70,12 +70,12 @@ const StudentGradeReview: React.FC = () => {
                 <p className="mr-2 text-xl font-semibold">{index + 1}.</p>
                 <p
                   className={`text-xl font-semibold ${
-                    question.studentAnswer === question.correctAnswer || question.score > 0
+                    question.studentAnswer === question.correctAnswer || question.score && question.score > 0
                       ? "text-green-500"
                       : "text-red-500"
                   }`}
                 >
-                  {question.studentAnswer === question.correctAnswer || question.score > 0
+                  {question.studentAnswer === question.correctAnswer || question.score && question.score > 0
                     ? "✔"
                     : "✘"}
                 </p>
@@ -177,7 +177,7 @@ const StudentGradeReview: React.FC = () => {
                 className={`w-14 py-2 rounded text-white font-semibold ${
                   examGrade.questions[index].studentAnswer ===
                     examGrade.questions[index].correctAnswer ||
-                  examGrade.questions[index].score > 0
+                    examGrade.questions[index].score && examGrade.questions[index].score > 0
                     ? "bg-green-200 border-2 border-green-400 text-green-600" 
                     : "bg-pink-200 border-2 border-pink-400 text-pink-600"
                 }`}

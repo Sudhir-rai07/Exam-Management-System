@@ -54,20 +54,12 @@ const teacherMenuItems1: MenuItemType[] = [
 const teacherMenuItems2: MenuItemType[] = [
   {
     title: "Create Exam",
-    url: "teacher/exam-info/create/",
+    url: "teacher/exam-info/create/basic",
     icon: <CopyCheck />,
   },
   {
-    title: "View Result",
-    url: "/admin/view-result",
-    icon: <Info />,
-  },{
-    title: "Exam",
-    url: "/student/exam",
-    icon: <Info />,
-  },{
     title: "Validate Answers",
-    url: "/instructor/exam/validate",
+    url: "/student/grade",
     icon: <Info />,
   },
 ];
@@ -214,6 +206,58 @@ const sidebarContent = (role: string) => {
       </>
     );
 
+    if(role === "instructor")
+      return (
+    <>
+    <SidebarContent>
+          <SidebarGroup />
+          <SidebarGroupLabel>
+            <LayoutGrid size={20} className="mr-2" />
+            <span className="text-lg">Organization</span>
+          </SidebarGroupLabel>
+          <SidebarGroupContent className="pl-4">
+            <SidebarMenu>
+              {teacherMenuItems1.map((item) => {
+                return (
+                  <SidebarMenuItem key={item.title}>
+                    {/* {item.title} */}
+                    <SidebarMenuButton asChild>
+                      <Link to={item.url}>
+                        {item.icon}
+                        <span>{item.title}</span>
+                      </Link>
+                    </SidebarMenuButton>
+                  </SidebarMenuItem>
+                );
+              })}
+            </SidebarMenu>
+          </SidebarGroupContent>
+
+          <SidebarGroup />
+          <SidebarGroupLabel>
+            <Sheet size={20} className="mr-2" />
+            <span className="text-lg">Exam</span>
+          </SidebarGroupLabel>
+          <SidebarGroupContent className="pl-4">
+            <SidebarMenu>
+              {teacherMenuItems2.map((item) => {
+                return (
+                  <SidebarMenuItem key={item.title}>
+                    {/* {item.title} */}
+                    <SidebarMenuButton asChild>
+                      <Link to={item.url}>
+                        {item.icon}
+                        <span>{item.title}</span>
+                      </Link>
+                    </SidebarMenuButton>
+                  </SidebarMenuItem>
+                );
+              })}
+            </SidebarMenu>
+          </SidebarGroupContent>
+        </SidebarContent>
+    </>)
+
   if (role === "student") {
     return (
       <>
@@ -278,7 +322,7 @@ export function AppSidebar() {
   return (
     <Sidebar>
       {/* Select user Role */}
-      {sidebarContent("student")}
+      {sidebarContent(user.role)}
 
       <SidebarFooter>
         <SidebarMenu>
