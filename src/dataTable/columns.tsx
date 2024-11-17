@@ -180,7 +180,7 @@ export const studentColumns: ColumnDef<User>[] = [
     header: "Action",
     cell: ({row})=> {
             return(
-      <Link to={`/admin/student/${row.original.user_id}`} className="flex items-center gap-2 text-green-500 cursor-pointer"> Go to user</Link>
+      <Link to={`/organization-admin/student/${row.original.user_id}`} className="flex items-center gap-2 text-green-500 cursor-pointer"> Go to user</Link>
     )}
   })
 
