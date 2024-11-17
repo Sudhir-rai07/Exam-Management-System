@@ -3,7 +3,7 @@ import { DataTable } from "@/dataTable/data-table";
 import { questionColumns } from "@/dataTable/columns";
 import { Button } from "@/components/ui/button";
 import { Download } from "lucide-react";
-import AddQuestion from "../testBanks/AddQuestion";
+import AddQuestion from "@/components/pages/testBanks/AddQuestion";
 import QuestionQueryForm from "./QuestionQueryForm";
 
 const Questions = () => {
@@ -22,7 +22,7 @@ const Questions = () => {
 
         <QuestionQueryForm /> 
         <div className="flex justify-between w-full mt-2">
-        <AddQuestion headerText="Question" />
+            <AddQuestion headerText="Question"/>
         <Button className="flex items-center gap-2 bg-gray-400 dark:text-black">
           <Download /> Download
         </Button>

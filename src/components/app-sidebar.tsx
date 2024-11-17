@@ -42,45 +42,32 @@ type MenuItemType = {
 //  Exam --> Question ExamInfo
 const teacherMenuItems1: MenuItemType[] = [
   {
-    title: "Organisation",
-    url: "/admin/organisation",
-    icon: <Building2 />,
-  },
-  {
-    title: "Admins",
-    url: "/admin/organisations",
-    icon: <User />,
-  },
-  {
-    title: "Students",
-    url: "/admin/students",
-    icon: <UsersIcon />,
-  },
-  {
-    title: "Student Groups",
-    url: "/admin/student-group",
-    icon: <Group />,
-  },
-  {
     title: "Test Banks",
     url: "/admin/test-banks",
     icon: <Book />,
-  },
-  {
+  }, {
     title: "Questions",
-    url: "/admin/Questions",
+    url: "/admin/questions",
     icon: <Book />,
   },
 ];
 const teacherMenuItems2: MenuItemType[] = [
   {
-    title: "Exams",
-    url: "/admin/exams",
+    title: "Create Exam",
+    url: "teacher/exam-info/create/",
     icon: <CopyCheck />,
   },
   {
     title: "View Result",
     url: "/admin/view-result",
+    icon: <Info />,
+  },{
+    title: "Exam",
+    url: "/student/exam",
+    icon: <Info />,
+  },{
+    title: "Validate Answers",
+    url: "/instructor/exam/validate",
     icon: <Info />,
   },
 ];
@@ -149,7 +136,7 @@ const organizationAdminMenuItmes: MenuItemType[] = [
   },
   {
     title: "Questions",
-    url: "/admin/Questions",
+    url: "/admin/questions",
     icon: <Book />,
   },
 ];
@@ -157,7 +144,12 @@ const organizationAdminMenuItmes: MenuItemType[] = [
 const organizationAdminMenuItmes2: MenuItemType[] = [
   {
     title: "Exam",
-    url: "/student/exam",
+    url: "teacher/exam-info/create/",
+    icon: <Info />,
+  },
+  {
+    title: "Exam-Info",
+    url: "teacher/exam-info/",
     icon: <Info />,
   },
   {
@@ -167,6 +159,7 @@ const organizationAdminMenuItmes2: MenuItemType[] = [
   },
 ]
 
+// SIDEBAR ITEMS
 const sidebarContent = (role: string) => {
   if (role === "organizationAdmin")
     return (
@@ -228,7 +221,7 @@ const sidebarContent = (role: string) => {
           <SidebarGroup />
           {studentMenuItems.map((value) => {
             return (
-              <SidebarGroupLabel key={value.url}>
+              <SidebarGroupLabel key={value.url} className="space-x-3">
                 <Grid2X2 />
                 <Link
                   to={value.url}
@@ -285,7 +278,7 @@ export function AppSidebar() {
   return (
     <Sidebar>
       {/* Select user Role */}
-      {sidebarContent("organizationAdmin")}
+      {sidebarContent("student")}
 
       <SidebarFooter>
         <SidebarMenu>

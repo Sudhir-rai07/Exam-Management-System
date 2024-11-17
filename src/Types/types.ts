@@ -14,8 +14,8 @@ export interface StudentGrade {
     time_spent: number;
     grade: 1|2|3|4|5;
     feedback: string;
-    feedback_time: Date;
-    grade_time: Date;
+    feedback_time: string;
+    grade_time: string;
 }
 
 export interface Question {
@@ -33,16 +33,16 @@ export interface TestBank {
     description: string;
     questions: Question[];
 }
-export interface Exams {
+export interface Exam {
     exam_id: number | string;
-    teacher_id: number;
+    teacher_id: number | string;
     title: string;
     description: string;
     time_limit: number;
-    difficulty: string;
-    due_date: Date;
-    created_at: Date;
-    question_id: number | string;
+    difficulty: number;
+    questions: Question[];
+    due_date: string;
+    created_at: string;
 }
 
 export interface QuestionOptions {
@@ -66,7 +66,7 @@ export interface OperationLogs {
     request_url: string;
     request_params: string;
     response_status: number;
-    created_at: Date;
+    created_at: string;
 }
 
 export interface Organization {
@@ -83,3 +83,21 @@ export interface StudentGroup {
     name: string;
     students: User[];
 }
+
+
+
+
+export interface GradeCardType {
+    date: string;
+    grade: number;
+    name: string;
+    time: number
+  }
+  
+
+  export interface StudentExamCardType {
+    examDate: string;
+    examDuration: number;
+    examName: string;
+    examStatus: "start"|"completed"|"feedback";
+  }

@@ -2,6 +2,7 @@ import React from 'react'
 import { Button } from '../ui/button'
 import { Eye, NotepadText, Pen, Timer } from 'lucide-react'
 import { StudentExamCardType } from '@/Types/types'
+import { Link } from 'react-router-dom'
 
 const StudentExamCard:React.FC<StudentExamCardType> = ({examDate,examDuration,examName,examStatus}) => {
 
@@ -9,7 +10,7 @@ const StudentExamCard:React.FC<StudentExamCardType> = ({examDate,examDuration,ex
         switch(examStatus){
             case "start":
                 return (<><Button className="bg-blue-400 hover:bg-blue-500">
-              <Pen size={14}/>  Join
+              <Link to={`join`} className='flex items-center gap-3'><Pen size={14}/>  Join</Link>
             </Button></>)
             case "completed":
                 return (<>

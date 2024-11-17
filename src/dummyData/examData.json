@@ -1,0 +1,80 @@
+[
+    {"exam_id": 1010,
+"teacher_id": 3030,
+"title": "First Exam",
+"description": "Hello dear students, Use your mind",
+"time_limit": 30,
+"difficulty": 4,
+"questions": [
+    {
+      "question_id": 1,
+      "question_type": "multiple choice",
+      "question_text": "What is the capital of France?",
+      "difficulty": 5,
+      "created_by": "Tom"
+    },{
+      "question_id": 1,
+      "question_type": "multiple choice",
+      "question_text": "What is the capital of France?",
+      "difficulty": 5,
+      "created_by": "Hardy"
+    },{
+      "question_id": 1,
+      "question_type": "multiple choice",
+      "question_text": "What is the capital of France?",
+      "difficulty": 5,
+      "created_by": "Noman"
+    },{
+      "question_id": 1,
+      "question_type": "multiple choice",
+      "question_text": "What is the capital of France?",
+      "difficulty": 5,
+      "created_by": "Nolan"
+    },{
+      "question_id": 1,
+      "question_type": "multiple choice",
+      "question_text": "What is the capital of France?",
+      "difficulty": 5,
+      "created_by": "Tom"
+    },{
+      "question_id": 1,
+      "question_type": "multiple choice",
+      "question_text": "What is the capital of France?",
+      "difficulty": 5,
+      "created_by": "Tom"
+    },{
+      "question_id": 1,
+      "question_type": "multiple choice",
+      "question_text": "What is the capital of France?",
+      "difficulty": 5,
+      "created_by": "Tom"
+    },{
+      "question_id": 1,
+      "question_type": "multiple choice",
+      "question_text": "What is the capital of France?",
+      "difficulty": 5,
+      "created_by": "Tom"
+    },{
+      "question_id": 1,
+      "question_type": "multiple choice",
+      "question_text": "What is the capital of France?",
+      "difficulty": 5,
+      "created_by": "Tom"
+    },{
+      "question_id": 1,
+      "question_type": "multiple choice",
+      "question_text": "What is the capital of France?",
+      "difficulty": 5,
+      "created_by": "Tom"
+    },{
+      "question_id": 1,
+      "question_type": "multiple choice",
+      "question_text": "What is the capital of France?",
+      "difficulty": 5,
+      "created_by": "Tom"
+    }
+  ],
+"due_date": "2025-01-15",
+"created_at": "Today"
+}
+]

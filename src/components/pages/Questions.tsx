@@ -1,11 +1,11 @@
 import { Download } from "lucide-react"
 import { Button } from "../ui/button"
-import AddOrganisationDialog from "../utils/AddOrganisationDialog"
 import QuestionsQueryForm from "../utils/QuestionsQueryForm"
 import { DataTable } from "@/dataTable/data-table"
 import { questionColumns } from "@/dataTable/columns"
 import { useState } from "react"
 import questionData from '@/dummyData/questionData.json'
+import AddQuestion from "./testBanks/AddQuestion"
 
 
 const Questions = () => {
@@ -15,7 +15,7 @@ const Questions = () => {
         <QuestionsQueryForm setQuery={setQuery}/>
         <hr className="h-[2px] my-4 bg-gray-300 dark:bg-gray-700"/>
         <div className="flex justify-between w-full">
-        <AddOrganisationDialog headerText="Question"/>
+          <AddQuestion headerText="Question"/>
         <Button className="flex items-center gap-2 bg-gray-400 dark:text-black">
           <Download /> Download
         </Button>

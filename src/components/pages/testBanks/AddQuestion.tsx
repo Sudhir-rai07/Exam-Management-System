@@ -26,6 +26,8 @@ const AddQuestion = ({ headerText }: { headerText: string }) => {
   const [avatar, setAvatar] = useState<File | null>();
   const imageRef = useRef<HTMLInputElement | null>(null);
 
+  const [options, setOptions] = useState<number>(3)
+
   // Handle Rating change
   const handleRatingChange = (rating: number) => {
     setDifficulty(rating);
@@ -36,16 +38,20 @@ const AddQuestion = ({ headerText }: { headerText: string }) => {
     setType(type);
   };
 
+  // Handle file change
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.files && event.target.files[0]) {
       setAvatar(event.target.files[0]);
     }
   };
 
+  // Ref click
   const triggerFileInput = () => {
     imageRef.current?.click();
   };
 
+
+  // handle form submit
   const handleSubmit = (e: React.ChangeEvent<HTMLFormElement>) => {
     e.preventDefault();
     // Add logic to handle form submission
@@ -184,12 +190,14 @@ const AddQuestion = ({ headerText }: { headerText: string }) => {
             <div className="grid items-center grid-cols-4 gap-4">
             <label className="text-right">OptionNum</label>
             <div className="flex justify-between col-span-3 bg-gray-100">
-                <span className="text-black bg-gray-300 shadow-md cursor-pointer"><Minus/></span>
-                <span className="text-black">3</span>
-                <span className="text-black bg-gray-300 shadow-md cursor-pointer"><Plus /></span>
+                <span onClick={()=> setOptions(prev => prev-1)} className="text-black bg-gray-300 shadow-md cursor-pointer"><Minus/></span>
+                <span className="text-black">{options}</span>
+                <span className="text-black bg-gray-300 shadow-md cursor-pointer" onClick={()=> setOptions(prev => prev+1)}><Plus /></span>
             </div>
-              <Label htmlFor="opt1" className="text-right">
-                A
+              {Array.from({length: options}).map((option, idx)=>(
+                <>
+                <Label htmlFor="opt1" className="text-right">
+                {String.fromCharCode('A'.charCodeAt(0) + idx)}
               </Label>{" "}
               <Input
                 type="text"
@@ -197,7 +205,9 @@ const AddQuestion = ({ headerText }: { headerText: string }) => {
                 id="opt1"
                 className="col-span-3"
               />
-              <Label htmlFor="opt2" className="text-right">
+              </>
+              ))}
+              {/* <Label htmlFor="opt2" className="text-right">
                 B
               </Label>{" "}
               <Input
@@ -214,7 +224,7 @@ const AddQuestion = ({ headerText }: { headerText: string }) => {
                 placeholder="Please Enter"
                 id="opt2"
                 className="col-span-3"
-              />
+              /> */}
             </div>
           )}
 
