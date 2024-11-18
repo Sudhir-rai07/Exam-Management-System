@@ -1,5 +1,5 @@
-import { Navigate, Route, Routes } from "react-router-dom";
-import { lazy, Suspense } from "react";
+import { Route, Routes } from "react-router-dom";
+import {  Suspense } from "react";
 import { ThemeProvider } from "./components/theme-provider";
 
 // import StudentExam from './components/StudentExam'
@@ -36,7 +36,7 @@ import ValidateAnswers from "./components/pages/ValidateAnswers";
 import Login from "./components/auth/Login";
 // const Login = lazy(()=> import('./components/auth/Login'))
 
-import SignUp from "./components/auth/SignUp";
+// import SignUp from "./components/auth/SignUp";
 // const SignUp = lazy(()=> import('./components/auth/SignUp'))
 
 import Home from "./components/Home";
@@ -53,7 +53,7 @@ import ExamInfo from "./components/pages/exam/ExamInfo";
 
 // const TestBank = lazy(()=> import('./components/pages/TestBank'))
 
-import Organisation from "./components/pages/organization/Organization";
+// import Organisation from "./components/pages/organization/Organization";
 // const Organisation = lazy(()=> import('./components/pages/Organisation'))
 
 import Grade from "./components/Grade";
@@ -76,12 +76,13 @@ import { useAuthStore } from "./zustand/store";
 
 const App = () => {
   // const {isAuthenticated} = useAuth0()
-  const {user} = useAuthStore()
+  // const {user} = useAuthStore()
+ const isLogedIn = localStorage.getItem('isLoggedIn')
   return (
     <Suspense fallback={<h1>Loading....</h1>}>
       <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
         <Routes>
-          <Route path="/" element={user? <Home /> : <Login />}>
+          <Route path="/" element={isLogedIn? <Home /> : <Login />}>
             <Route index element={<EmptyPage />} />
 
             {/* Teacher */}

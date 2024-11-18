@@ -17,6 +17,7 @@ const Profile = () => {
   const handleLogout = () => {
     googleLogout()
     clearUser()
+    localStorage.removeItem("isLoggedIn")
     toast.success("loggedOut")
     navigate("/")
   }
