@@ -76,13 +76,13 @@ import { useAuthStore } from "./zustand/store";
 
 const App = () => {
   // const {isAuthenticated} = useAuth0()
-  // const {user} = useAuthStore()
- const isLogedIn = localStorage.getItem('isLoggedIn')
+  const {user} = useAuthStore()
+//  const isLogedIn = localStorage.getItem('isLoggedIn')
   return (
     <Suspense fallback={<h1>Loading....</h1>}>
       <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
         <Routes>
-          <Route path="/" element={isLogedIn? <Home /> : <Login />}>
+          <Route path="/" element={user? <Home /> : <Login />}>
             <Route index element={<EmptyPage />} />
 
             {/* Teacher */}
