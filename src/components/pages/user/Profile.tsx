@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { useAuthStore } from "@/zustand/store";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Breadcrumbs from "@/components/Breadcrumbs";
 
 import { googleLogout } from '@react-oauth/google';
@@ -11,14 +11,15 @@ import toast from "react-hot-toast";
 const Profile = () => {
   // const {user} = useUser()
   // const { user, logout } = useAuth0();
-
+  const {user, clearUser} = useAuthStore()
+  const navigate = useNavigate()
 
   const handleLogout = () => {
     googleLogout()
+    clearUser()
     toast.success("loggedOut")
-    window.location.href = window.location.origin
+    navigate("/")
   }
-  const {user} = useAuthStore()
   return (
     <section className="h-full px-4 mx-4 mt-5">
       <Breadcrumbs />

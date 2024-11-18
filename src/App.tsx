@@ -94,10 +94,7 @@ const App = () => {
               <Route path={"preview"} element={<ThirdPage />} />
               <Route path={"success"} element={<PageFour />} />
             </Route>
-            <Route
-              path="teacher/validate-answers"
-              element={<ValidateAnswers />}
-            />
+            <Route path="teacher/validate-answers" element={<ValidateAnswers />} />
             <Route path="teacher/feedback" element={<Feedback />} />
 
             <Route path="/teacher/test-banks" element={<TestBanks />} />
@@ -106,51 +103,28 @@ const App = () => {
 
             {/* SYSTEM ADMIN */}
             <Route path="systemadmin" element={<EmptyPage />} />
-            <Route
-              path="system-admin/user/instructors"
-              element={<Instructors />}
-            />
+            <Route path="system-admin/user/instructors" element={<Instructors />} />
             <Route path="system-admin/user/students" element={<Students />} />
-            <Route
-              path="system-admin/user/organisation"
-              element={<OrganizationList />}
-            />
+            <Route  path="system-admin/user/organisation" element={<OrganizationList />} />
+
+            {/* PAGES MENTIONED IN PROJECT DESCRIPTION */}
             {/* <Route path="system-admin/user/organisation" element={<Organizations />} /> */}
             {/* <Route path="admin/organisation/:id" element={<Org />} /> */}
-            {/* <Route
-              path="admin/organisation/:id/statistics"
-              element={<OrganizationStatics />}
-            /> */}
-            <Route
-              path="organization-admin/student/:id"
-              element={<Student />}
-            />
+            {/* <Route path="admin/organisation/:id/statistics" element={<OrganizationStatics />} /> */}
+            <Route path="organization-admin/student/:id" element={<Student />} />
             <Route path="admin/student/groups" element={<StudentGroups />} />
             <Route path="admin/student/groups/:id" element={<StudentGroup />} />
 
             {/* ORGANIZATION ADMIN */}
-            <Route
-              path="oragnization-admin"
-              element={<EmptyPage />}
-            /><Route
-              path="oragnization-admin/user/instructors"
-              element={<Instructors />}
-            />
-            <Route
-              path="oragnization-admin/user/students"
-              element={<Students />}
-            />
-            <Route
-              path="oragnization-admin/user/organisation"
-              element={<OrganizationList />}
-            />
-            <Route path="/oragnization-admin/user/questions" element={<TestBankPage />} />
-            <Route path="oragnization-admin/exam-info/" element={<ExamInfo />} />
-            <Route
-              path="oragnization-admin/questions"
-              element={<Questions />}
-            />
-            <Route path="oragnization-admin/grade" element={<Grade />} />
+            <Route path="organization-admin" element={<EmptyPage />} />
+            <Route path="organization-admin/user/instructors" element={<Instructors />} />
+            <Route path="organization-admin/user/students" element={<Students />} />
+            <Route path="organization-admin/user/organisation" element={<OrganizationList />} />
+            <Route path="organization-admin/user/test-bank" element={<TestBankPage />} />
+            <Route path="organization-admin/user/questions" element={<TestBankPage />} />
+            <Route path="organization-admin/exam-info/" element={<ExamInfo />} />
+            <Route path="organization-admin/questions" element={<Questions />} />
+            <Route path="organization-admin/grade" element={<Grade />} />
 
             {/* Student */}
             <Route path="student/" element={<EmptyPage />} />
@@ -159,7 +133,7 @@ const App = () => {
             <Route path="student/gradeinner" element={<StudentGradeReview />} />
             <Route path="student/exam/join" element={<JoinExam />} />
 
-
+            {/* Utility routes */}
             <Route path="notification" element={<Notification />} />
             <Route path="settings" element={<Settings />} />
               
@@ -169,7 +143,7 @@ const App = () => {
 
           {/* AUTH ROUTES */}
           {/* <Route path="/login" element={<Login />} /> */}
-          <Route path="/signup" element={<SignUp />} />
+          {/* <Route path="/signup" element={<SignUp />} /> */}
           <Route path="/reset-password" element={<ResetPassword />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/update-profile" element={<UpdateProfile />} />

@@ -1,12 +1,18 @@
-import React, { useEffect, useState } from "react";
+import React, {  useState } from "react";
 import { FaUser } from "react-icons/fa";
 import { IoMdEye, IoMdEyeOff } from "react-icons/io";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Breadcrumbs from "../Breadcrumbs";
 import { Input } from "../ui/input";
-import GoogleLoginButton from "./GoogleLoginButton";
+import { AuthUser } from '@/Types/types';
+import { useAuthStore } from '@/zustand/store';
+import { GoogleLogin } from '@react-oauth/google';
+import {jwtDecode} from 'jwt-decode';
+import toast from 'react-hot-toast';
 
 const Login = () => {
+  const {setUser} = useAuthStore()
+  const navigate = useNavigate()
   const [username, setUsername] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [showPassword, setShowPassword] = useState(false);
@@ -16,6 +22,19 @@ const Login = () => {
     setShowPassword((prev) => !prev);
   };
 
+  const handleSuccess = (response: any) => {
+    const decoded: AuthUser = jwtDecode(response.credential); // Decode JWT
+    console.log('Decoded User Info:', decoded);
+    setUser(decoded); // Save user data in Zustand
+    navigate("/")
+    toast.success("Logged in")
+  };
+
+  const handleError = () => {
+    console.log('Login Failed');
+  };
+
+// Handle Submit
   const handleSubmit = (e: React.ChangeEvent<HTMLFormElement>) => {
     e.preventDefault();
 
@@ -118,7 +137,10 @@ const Login = () => {
               </Link>
             </span>
             <div className="mt-4 max-w-[350px]">
-              <GoogleLoginButton />
+            <GoogleLogin
+      onSuccess={handleSuccess}
+      onError={handleError}
+    />
             </div>
           </form>
         </div>

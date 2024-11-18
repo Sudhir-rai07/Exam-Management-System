@@ -70,10 +70,6 @@ const teacherMenuItems2: MenuItemType[] = [
 
 const studentMenuItems: MenuItemType[] = [
   {
-    title: "Profile",
-    url: "/profile",
-    icon: <LayoutGrid />,
-  },{
     title: "Exam",
     url: "/student/exam",
     icon: <LayoutGrid />,
@@ -83,6 +79,11 @@ const studentMenuItems: MenuItemType[] = [
     url: "/student/grade",
     icon: <LayoutGrid />,
   },
+  {
+    title: "Profile",
+    url: "/profile",
+    icon: <LayoutGrid />,
+  }
 ];
 
 const systemAdminMenuItmes: MenuItemType[] = [
@@ -106,17 +107,17 @@ const systemAdminMenuItmes: MenuItemType[] = [
 const organizationAdminMenuItmes: MenuItemType[] = [
   {
     title: "Instructors",
-    url: "/oragnization-admin/user/instructors",
+    url: "/organization-admin/user/instructors",
     icon: <User />,
   },
   {
     title: "Students",
-    url: "/oragnization-admin/user/students",
+    url: "/organization-admin/user/students",
     icon: <UsersIcon />,
   },
   {
     title: "Organisation",
-    url: "/oragnization-admin/user/organisation",
+    url: "/organization-admin/user/organisation",
     icon: <Building2 />,
   },
   // {
@@ -144,22 +145,22 @@ const organizationAdminMenuItmes: MenuItemType[] = [
 const organizationAdminMenuItmes2: MenuItemType[] = [
   {
     title: "TestBank",
-    url: "oragnization-admin/user/test-bank",
+    url: "organization-admin/user/test-bank",
     icon: <Info />,
   },
   {
     title: "Questions",
-    url: "oragnization-admin/user/questions/",
+    url: "organization-admin/user/questions/",
     icon: <Info />,
   },
   {
     title: "Exam Info",
-    url: "oragnization-admin/exam-info",
+    url: "organization-admin/exam-info",
     icon: <GraduationCap />,
   },
   {
     title: "Grade",
-    url: "oragnization-admin/grade",
+    url: "organization-admin/grade",
     icon: <GraduationCap />,
   },
 ]
@@ -175,6 +176,7 @@ const sidebarContent = (role: string) => {
         <IoMdSpeedometer size={50}/>
         <Link to="/oragnization-admin" className="flex items-center gap-1 ml-2 text-lg">HomePage</Link>
         </SidebarGroupLabel>
+        
           <SidebarGroup />
           <SidebarGroupLabel>
             <LayoutGrid size={20} className="mr-2" />
