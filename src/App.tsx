@@ -168,7 +168,7 @@ const App = () => {
           </Route>
 
           {/* AUTH ROUTES */}
-          <Route path="/login" element={<Login />} />
+          {/* <Route path="/login" element={<Login />} /> */}
           <Route path="/signup" element={<SignUp />} />
           <Route path="/reset-password" element={<ResetPassword />} />
           <Route path="/profile" element={<Profile />} />
