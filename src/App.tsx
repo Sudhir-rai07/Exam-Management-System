@@ -72,16 +72,16 @@ import Feedback from "./components/pages/instructors/Feedback";
 import NotFound from "./components/pages/pageNotFound/PageNotFound";
 import Notification from "./components/pages/notification/Notification";
 import Settings from "./components/pages/settings/Setting";
-
-import {useAuth0} from '@auth0/auth0-react'
+import { useAuthStore } from "./zustand/store";
 
 const App = () => {
-  const {isAuthenticated} = useAuth0()
+  // const {isAuthenticated} = useAuth0()
+  const {user} = useAuthStore()
   return (
     <Suspense fallback={<h1>Loading....</h1>}>
       <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
         <Routes>
-          <Route path="/" element={isAuthenticated? <Home /> : <Login />}>
+          <Route path="/" element={user? <Home /> : <Login />}>
             <Route index element={<EmptyPage />} />
 
             {/* Teacher */}

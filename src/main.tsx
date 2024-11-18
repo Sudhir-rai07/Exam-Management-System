@@ -4,20 +4,15 @@ import './index.css'
 import App from './App.tsx'
 import {BrowserRouter} from 'react-router-dom'
 import { Toaster } from 'react-hot-toast'
-import {Auth0Provider} from '@auth0/auth0-react'
+import {GoogleOAuthProvider} from '@react-oauth/google'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
+    <GoogleOAuthProvider clientId='1087654391185-c1ortfio2daks67utuvprg43f77b3ng6.apps.googleusercontent.com'>
     <BrowserRouter>
-    <Auth0Provider
-    domain='dev-y02gmfi6nl6rcyz6.us.auth0.com'
-    clientId='9QdMZozJsoiIxguW9phiXUxQJ9HWzZhg'
-    authorizationParams={{
-      redirect_uri: window.location.origin
-    }}>
     <App />
     <Toaster />
-    </Auth0Provider>
     </BrowserRouter>
+    </GoogleOAuthProvider>
   </StrictMode>,
 )

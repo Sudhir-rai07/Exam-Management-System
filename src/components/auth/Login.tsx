@@ -1,14 +1,12 @@
 import React, { useEffect, useState } from "react";
-import toast from "react-hot-toast";
 import { FaUser } from "react-icons/fa";
 import { IoMdEye, IoMdEyeOff } from "react-icons/io";
-import { Link, Navigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Breadcrumbs from "../Breadcrumbs";
 import { Input } from "../ui/input";
-import LoginButton from "./LoginButton";
+import GoogleLoginButton from "./GoogleLoginButton";
 
 const Login = () => {
-  
   const [username, setUsername] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [showPassword, setShowPassword] = useState(false);
@@ -20,7 +18,7 @@ const Login = () => {
 
   const handleSubmit = (e: React.ChangeEvent<HTMLFormElement>) => {
     e.preventDefault();
-    
+
     console.log(username, null, password);
     setUsername("");
     setPassword("");
@@ -59,7 +57,7 @@ const Login = () => {
             </div>
 
             <div className="bg-transparent mt-4 flex rounded-sm items-center gap-2 bg-gray-200 px-2 py-2 max-w-[350px]">
-            {showPassword ? (
+              {showPassword ? (
                 <>
                   <IoMdEye
                     color="gray"
@@ -99,7 +97,10 @@ const Login = () => {
                   Remember password
                 </label>
               </div>
-              <Link to={"/reset-password"} className="text-blue-500 transition cursor-pointer hover:underline">
+              <Link
+                to={"/reset-password"}
+                className="text-blue-500 transition cursor-pointer hover:underline"
+              >
                 Forgot password
               </Link>
             </div>
@@ -116,7 +117,9 @@ const Login = () => {
                 Create
               </Link>
             </span>
-           <LoginButton />
+            <div className="mt-4 max-w-[350px]">
+              <GoogleLoginButton />
+            </div>
           </form>
         </div>
       </section>

@@ -8,6 +8,13 @@ export interface User {
     last_login?: string;
 }
 
+export interface AuthUser {
+    sub: string; // Unique Google ID
+    name: string;
+    email: string;
+    picture: string;
+  }
+
 export interface StudentGrade {
     grade_id: number | string;
     exam_id: number | string;

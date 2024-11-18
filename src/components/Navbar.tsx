@@ -9,11 +9,12 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "./ui/dropdown-menu";
-import {useAuth0 } from '@auth0/auth0-react'
+import { useAuthStore } from "@/zustand/store";
 
 const Navbar = () => {
   // const {user, updateRole} = useUser()
-  const { user:oauthUser} = useAuth0()
+  // const { user:oauthUser} = useAuth0()
+  const {user} = useAuthStore()
 
   return (
     <header className="sticky top-0 light:bg-gray-100">
@@ -74,9 +75,9 @@ const Navbar = () => {
             <Settings size={18} />
           </Link>
 
-          {oauthUser && <Link to={"/profile"} className="overflow-hidden nav-item">
+          {user && <Link to={"/profile"} className="overflow-hidden nav-item">
             <img
-              src={oauthUser.picture}
+              src={user.picture}
               alt=""
               className="bg-cover"
             />

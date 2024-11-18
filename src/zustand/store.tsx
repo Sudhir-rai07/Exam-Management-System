@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-import { Organization, Question, StudentGroup, TestBank, User } from '@/Types/types';
+import { AuthUser, Organization, Question, StudentGroup, TestBank, User } from '@/Types/types';
 import orgaizationData from '@/dummyData/organisationData.json'
 import studentData from '@/dummyData/studentData.json'
 import studentGroupData from '@/dummyData/studentGroupData.json'
@@ -27,6 +27,18 @@ const userData:User = {
     password: "string",
     role: "systemAdmin"
 }
+
+interface AuthState {
+  user: AuthUser | null;
+  setUser: (user: AuthUser) => void;
+  clearUser: () => void;
+}
+
+export const useAuthStore = create<AuthState>((set) => ({
+  user: null,
+  setUser: (user) => set({ user }),
+  clearUser: () => set({ user: null }),
+}));
 
 export const useUser = create<Usertore>((set) => ({
   user: userData, // Initial state as null for no user
