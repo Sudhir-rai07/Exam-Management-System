@@ -17,7 +17,7 @@ const Navbar = () => {
   const {user} = useAuthStore()
 
   return (
-    <header className="sticky top-0 light:bg-gray-100">
+    <header className="sticky top-0 bg-gray-100 dark:bg-[#18181b] dark:shadow-md z-50">
       <nav className="z-50 flex items-center justify-between w-full py-2 shadow lg:px-4">
         <Link to={"/"} className="pl-2 text-2xl font-semibold">
           EMS

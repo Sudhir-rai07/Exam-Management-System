@@ -14,7 +14,7 @@ const Questions = () => {
     <section className='w-full h-full mb-8'>
         <QuestionsQueryForm setQuery={setQuery}/>
         <hr className="h-[2px] my-4 bg-gray-300 dark:bg-gray-700"/>
-        <div className="flex justify-between w-full">
+        <div className="flex justify-between w-full h-[calc(100vh-450px)] overflow-y-scroll">
           <AddQuestion headerText="Question"/>
         <Button className="flex items-center gap-2 bg-gray-400 dark:text-black">
           <Download /> Download

@@ -36,7 +36,7 @@ const QueryForm = () => {
         setSelectedRating(0);
     };
     return (
-        <section>
+        <section className="w-full h-1/3">
             <h2 className="text-2xl font-semibold">Query Form</h2>
             <div className="mt-8">
                 <form onSubmit={handleSubmit} className="query-form">

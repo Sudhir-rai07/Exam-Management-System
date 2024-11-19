@@ -15,8 +15,6 @@ import {
   ChevronUp,
   CopyCheck,
   GraduationCap,
-  Grid2X2,
-  Group,
   Info,
   LayoutGrid,
   Settings,
@@ -174,7 +172,7 @@ const sidebarContent = (role: string) => {
         <SidebarGroup />
         <SidebarGroupLabel>
         <IoMdSpeedometer size={50}/>
-        <Link to="/oragnization-admin" className="flex items-center gap-1 ml-2 text-lg">HomePage</Link>
+        <Link to="/organization-admin" className="flex items-center gap-1 ml-2 text-lg">HomePage</Link>
         </SidebarGroupLabel>
         
           <SidebarGroup />

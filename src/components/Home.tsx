@@ -5,19 +5,18 @@ import Navbar from "./Navbar";
 import { SidebarProvider, SidebarTrigger } from "./ui/sidebar";
 
 const Home = () => {
-    
-    
   return (
     <SidebarProvider>
       <AppSidebar />
-      <div className="w-full h-screen bg-[#fafafa] dark:bg-[#18181b]">
+      <div className="w-full min-h-full bg-[#fafafa] dark:bg-[#18181b]">
         <Navbar />
         <SidebarTrigger />
         <Breadcrumbs />
 
         {/* Outlet */}
-        <section className="h-[85%] px-4 mt-5 mx-4">
-        <Outlet />
+        <section 
+      className="flex-1 w-full px-4">
+      <Outlet />
     </section>
       </div>
     </SidebarProvider>

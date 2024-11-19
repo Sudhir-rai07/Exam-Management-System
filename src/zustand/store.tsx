@@ -25,7 +25,7 @@ const userData:User = {
     username: "Noman",
     email: "noman@Domain.com",
     password: "string",
-    role: "organizationAdmin"
+    role: "instructor"
 }
 
 interface AuthState {
